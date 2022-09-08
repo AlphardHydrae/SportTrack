@@ -6,7 +6,7 @@
     <meta name="author" content="Sophie BERTRAND">
     <meta name="description" content="Sign Up">
 
-    <link rel="stylesheet" href="#">
+    <link rel="stylesheet" href="static/css/signup.css">
 
     <title>Sign Up</title>
 </head>
@@ -22,6 +22,12 @@
 
                     <label class="#">Prénom</label>
                     <input type="text" class="#" placeholder="Prénom" required>
+
+                    <label class="#">Adresse mail</label>
+                    <input type="email" class="#" required>
+
+                    <label class="#">Mot de passe</label>
+                    <input type="password" class="#" required>
                 </div>
                 <div class="#">
                     <label class="#">Date de naissance</label>
@@ -29,16 +35,21 @@
                 </div>
                 <div class="#">
                     <label class="#">Sexe</label>
-                    <input type="radio" class="#" value="Masculin">
-                    <input type="radio" class="#" value="Féminin">
-                    <input type="radio" class="#" value="Autre">
+                    <input type="radio" class="#" value="h">
+                    <label for="h">Masculin</label>
+                    <input type="radio" class="#" value="f">
+                    <label for="f">Féminin</label>
+                    <input type="radio" class="#" value="a">
+                    <label for="a">Autre</label>
                 </div>
                 <div class="#">
                     <label class="#">Taille (cm)</label>
-                    <input type="range" id="#" min="0" max="250">
+                    <input type="range" id="#" min="0" max="250" oninput="this.nextElementSibling.value = this.value">
+                    <output class="#">150</output>
 
                     <label class="#">Poids (kg)</label>
-                    <input type="range" id="#" min="0" max="250">
+                    <input type="range" id="#" min="0" max="250" oninput="this.nextElementSibling.value = this.value">
+                    <output class="#">60</output>
                 </div>
             </form>
         </div>
