@@ -6,15 +6,16 @@
     <meta name="author" content="Sophie BERTRAND">
     <meta name="description" content="Sign Up">
 
-    <link rel="stylesheet" href="static/css/signup.css">
+    <link rel="stylesheet" href="/static/css/signup.css">
 
     <title>Sign Up</title>
 </head>
 
 <body>
 
-    <div class="#">
-        <div class="#">
+    <div class="main">
+        <div class="container">
+            <header class="header">Créer un compte</header>
             <form method="POST">
                 <div class="#">
                     <label class="#">Nom</label>
@@ -27,7 +28,9 @@
                     <input type="email" class="#" required>
 
                     <label class="#">Mot de passe</label>
-                    <input type="password" class="#" required>
+                    <input type="password" class="#" pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}"
+                        title="Doit contenir au moins un chiffre, une lettre majuscule, une lettre minuscule et au moins 8 caractères"
+                        required>
                 </div>
                 <div class="#">
                     <label class="#">Date de naissance</label>
@@ -51,6 +54,7 @@
                     <input type="range" id="#" min="0" max="250" oninput="this.nextElementSibling.value = this.value">
                     <output class="#">60</output>
                 </div>
+                <button id="">Ok</button>
             </form>
         </div>
     </div>
