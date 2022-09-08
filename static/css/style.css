@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: rgb(121, 9, 120);
+  background: linear-gradient(
+    171deg,
+    rgba(121, 9, 120, 0.884326171875) 0%,
+    rgba(159, 38, 158, 0.915576171875) 83%
+  );
+}
+
+.main {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.container {
+  -ms-flex: 50%;
+  flex: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
+
+.header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 2rem;
+}
+
+.line {
+  height: 0.25rem;
+  width: 100%;
+  background: rgb(121, 9, 120);
+  background: linear-gradient(
+    171deg,
+    rgba(121, 9, 120, 0.884326171875) 0%,
+    rgba(159, 38, 158, 0.915576171875) 83%
+  );
+  margin-bottom: 1rem;
+}
+
+.form-field {
+  padding: 0.5rem;
+}
+
+.text-field {
+  width: 100%;
+  border: none;
+  padding: 0.5rem;
+}
+
+#date-field {
+  border: none;
+}
+
+.btn-basic {
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 200ms linear;
+  text-align: center;
+  border: none;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 20%;
+  background-color: #790978;
+  color: white;
+  box-shadow: 0 8px 24px 0 rgba(255, 235, 167, 0.2);
+  padding: 0.75rem;
+}
+
+.btn-basic:hover {
+  background-color: #9f269e;
+  color: white;
+  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
+  cursor: pointer;
+}
+
+#logout {
+  background-color: #bb0f0f;
+  color: white;
+}
+
+#logout:hover {
+  background-color: #c93636;
+  color: white;
+}
+
+#alt {
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 200ms linear;
+  text-align: center;
+  border: none;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  color: #790978;
+  padding: 0.75rem;
+}
+
+#alt:hover {
+  border: none;
+  background-color: #790978;
+  color: white;
+  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
+  cursor: pointer;
+}

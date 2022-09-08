@@ -6,22 +6,31 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>SportTrack</title>
-  <link href="/static/css/login.css" rel="stylesheet" type="text/css" />
+  <link href="/static/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class = "arriere">
-        <div class = "avant">
-            <form method="POST" action="/login.php">
-                <label for="femail">Email :</label><br>
-                <input type="email" id="femail" value=" " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required> <br>
-                <label for="fmdp">Mot de Passe :</label><br>
-                <input type="password" id="fmdp" value=" " required>
-                <br><br>
-                <input type="submit" value="Connection">
-              </form> 
+  <div class="main">
+    <div class="container">
+      <div class="header">
+        <header id="head">Se connecter</header>
+      </div>
+      <div class="line"></div>
+      <form method="POST" action="/login.php">
+        <div class="form-field">
+          <label for="femail">Email</label><br>
+          <input type="email" class="text-field" id="femail" placeholder="Email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
         </div>
+        <div class="form-field">
+          <label for="fmdp">Mot de Passe</label><br>
+          <input type="password" class="text-field" id="fmdp" placeholder="Mot de passe" required>
+        </div>
+        <input type="submit" class="btn-basic" value="Connexion">
+      </form>
+      <button class="btn-basic" id="alt" onclick="window.location.href='signup.html'">Créer un compte</button>
     </div>
+  </div>
 </body>
 
 </html>

@@ -3,10 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="author" content="Sophie BERTRAND">
     <meta name="description" content="Sign Up">
 
-    <link rel="stylesheet" href="/static/css/signup.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 
     <title>Sign Up</title>
 </head>
@@ -18,7 +17,8 @@
             <div class="header">
                 <header id="head">Créer un compte</header>
             </div>
-            <form action="#" method="POST">
+            <div class="line"></div>
+            <form action="/signup.php" method="POST">
                 <div class="form-field">
                     <label class="#">Nom</label>
                     <input type="text" class="text-field" placeholder="Nom" required>
@@ -61,8 +61,9 @@
                     <input type="range" id="#" min="0" max="250" oninput="this.nextElementSibling.value = this.value">
                     <output class="#">60</output>
                 </div>
-                <input type="submit" value="Ok">
+                <input type="submit" class="btn-basic" value="Ok">
             </form>
+            <button class="btn-basic" id="logout" onclick="window.location.href='login.html'">Retour</button>
         </div>
     </div>
 

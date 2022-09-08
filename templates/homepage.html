@@ -3,12 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="author" content="Sophie BERTRAND">
-    <meta name="description" content="Sign Up">
+    <meta name="description" content="Homepage">
 
-    <link rel="stylesheet" href="/static/css/signup.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 
-    <title>Sign Up</title>
+    <title>Homepage</title>
 </head>
 
 <body>
@@ -18,18 +17,17 @@
             <div class="header">
                 <header id="head">Accueil</header>
             </div>
+            <div class="line"></div>
             <div class="#">
-                <form action="#" method="POST">
+                <form action="/loadfile.php" method="POST">
                     <label class="#">Charger une fichier</label>
                     <input type="file" accept=".json" required>
                     <input type="submit" value="Ok">
                 </form>
             </div>
-            <div class="#">
-                <label class="#">Modifier mes données</label>
-                <button id="#" onClick="changecredentials.html">Aller</button>
-            </div>
-            <button id="#">Déconnexion</button>
+            <button class="btn-basic" id="alt" onclick="window.location.href='changecredentials.html'">Modifier mes
+                données</button><br>
+            <button class="btn-basic" id="logout" onclick="window.location.href='login.html'">Déconnexion</button>
         </div>
     </div>
 
