@@ -14,9 +14,9 @@
         <div class = "avant">
             <form method="POST" action="/login.php">
                 <label for="femail">Email :</label><br>
-                <input type="text" id="femail" value=" "><br>
+                <input type="email" id="femail" value=" " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required> <br>
                 <label for="fmdp">Mot de Passe :</label><br>
-                <input type="text" id="fmdp" value=" ">
+                <input type="password" id="fmdp" value=" " required>
                 <br><br>
                 <input type="submit" value="Connection">
               </form> 
