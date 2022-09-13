@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS Data;
+DROP TABLE IF EXISTS Activite;
+DROP TABLE IF EXISTS Utilisateur;
 CREATE TABLE Utilisateur (
     nom VARCHAR(50),
     prenom VARCHAR(50),
@@ -31,7 +34,7 @@ CREATE TABLE Activite (
     CONSTRAINT ck_fMoy CHECK (fMoy > 0),
     CONSTRAINT ck_heure CHECK (hFin > hDebut),
     CONSTRAINT ck_duree CHECK (duree > "00:00:00"),
-    CONSTRAINT ck_distance CHECK (distance > 0),
+    CONSTRAINT ck_distance CHECK (distance > 0)
 );
 CREATE TABLE Data (
     time TIME PRIMARY KEY,
