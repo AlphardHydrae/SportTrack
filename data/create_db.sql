@@ -30,7 +30,10 @@ CREATE TABLE Activite (
     unUtilisateur VARCHAR(100),
     CONSTRAINT fk_unUtilisateur FOREIGN KEY (unUtilisateur) REFERENCES Utilisateur(email) ON DELETE CASCADE,
     CONSTRAINT ck_fMin CHECK (fMin > 0),
-    CONSTRAINT ck_fMax CHECK (fMax > 0),
+    CONSTRAINT ck_fMax CHECK (
+        fMax > 0
+        AND fMax < 226
+    ),
     CONSTRAINT ck_fMoy CHECK (fMoy > 0),
     CONSTRAINT ck_heure CHECK (hFin > hDebut),
     CONSTRAINT ck_duree CHECK (duree > "00:00:00"),
@@ -54,3 +57,29 @@ CREATE TABLE Data (
         AND latitude < 180
     )
 );
+INSERT INTO Utilisateur
+VALUES (
+        "BERTRAND",
+        "Sophie",
+        "2004-08-15",
+        "F",
+        158,
+        61,
+        "sophie_bertrand@zohomail.eu",
+        "alphard"
+    );
+INSERT INTO Activite
+VALUES (
+        "2022-09-13",
+        "walk",
+        90,
+        120,
+        105,
+        "07:15:00",
+        "07:50:00",
+        "00:35:00",
+        5,
+        "sophie_bertrand@zohomail.eu"
+    );
+INSERT INTO Data
+VALUES ("07:15:00", 90, 60, 120, 12, "2022-09-13");
