@@ -10,7 +10,7 @@ class SqliteConnection {
 
         return self::$sql;
     }
-    public static function getConnection() : PDO {
+    public function getConnection() : PDO {
         try {
             $db = new PDO('sqlite:../data/sport_track.db');
             $db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

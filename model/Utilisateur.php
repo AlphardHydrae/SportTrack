@@ -1,12 +1,12 @@
 <?php
 class Utilisateur{
-    private string $nom;
-    private string $prenom;
-    private string $dateDeNaissance;
-    private string $sexe;
-    private string $taille;
-    private string $poids;
-    private string $email;
+    private $nom;
+    private $prenom;
+    private $dateDeNaissance;
+    private $sexe;
+    private $taille;
+    private $poids;
+    private $email;
 
     public function  __construct() { /* Constructor */ }
     public function init($n, $p, $d, $s, $t, $pd, $e){
