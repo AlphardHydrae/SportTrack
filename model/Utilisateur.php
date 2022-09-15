@@ -2,7 +2,7 @@
 class Utilisateur{
     private string $nom;
     private string $prenom;
-    private string $dob;
+    private string $dateDeNaissance;
     private string $sexe;
     private string $taille;
     private string $poids;
@@ -12,7 +12,7 @@ class Utilisateur{
     public function init($n, $p, $d, $s, $t, $pd, $e){
         $this -> nom = $n;
         $this -> prenom = $p;
-        $this -> dob = $d;
+        $this -> dateDeNaissance = $d;
         $this -> sexe = $s;
         $this -> taille = $t;
         $this -> poids = $pd;
@@ -21,7 +21,7 @@ class Utilisateur{
 
     public function getNom() : string { return $this -> nom; }
     public function getPrenom() : string { return $this -> prenom; }
-    public function getDob() : string { return $this -> dob; }
+    public function getDob() : string { return $this -> dateDeNaissance; }
     public function getSexe() : string { return $this -> sexe; }
     public function getTaille() : string { return $this -> taille; }
     public function getPoids() : string { return $this -> poids; }
