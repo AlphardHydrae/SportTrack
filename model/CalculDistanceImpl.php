@@ -17,11 +17,11 @@ class CalculDistanceImpl implements CalculDistance {
     }
 
     function calculDistanceTrajet(Array $parcours): float { 
-        ret = 0;
+        $ret = 0;
         if(&parcours != null){
 
         }
-        return ret; 
+        return $ret; 
     }
     }
 ?>
