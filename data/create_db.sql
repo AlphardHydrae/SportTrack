@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS Data;
 DROP TABLE IF EXISTS Activite;
 DROP TABLE IF EXISTS Utilisateur;
+
 CREATE TABLE Utilisateur (
     nom VARCHAR(50),
     prenom VARCHAR(50),
@@ -17,6 +18,7 @@ CREATE TABLE Utilisateur (
     CONSTRAINT ck_taille CHECK (taille > 0),
     CONSTRAINT ck_poids CHECK (poids > 0)
 );
+
 CREATE TABLE Activite (
     date DATE PRIMARY KEY,
     description VARCHAR(100),
@@ -39,6 +41,7 @@ CREATE TABLE Activite (
     CONSTRAINT ck_duree CHECK (duree > "00:00:00"),
     CONSTRAINT ck_distance CHECK (distance > 0)
 );
+
 CREATE TABLE Data (
     time TIME PRIMARY KEY,
     freqCardiaque INTEGER,
@@ -57,6 +60,7 @@ CREATE TABLE Data (
         AND latitude < 180
     )
 );
+
 INSERT INTO Utilisateur
 VALUES (
         "BERTRAND",
@@ -68,6 +72,7 @@ VALUES (
         "sophie_bertrand@zohomail.eu",
         "alphard"
     );
+
 INSERT INTO Activite
 VALUES (
         "2022-09-13",
@@ -81,5 +86,6 @@ VALUES (
         5,
         "sophie_bertrand@zohomail.eu"
     );
+
 INSERT INTO Data
 VALUES ("07:15:00", 90, 60, 120, 12, "2022-09-13");
