@@ -13,7 +13,7 @@ class CalculDistanceImpl implements CalculDistance {
             $long2 = $long2*pi()/180;
             $ret = $R*acos(sin($lat2)*sin($lat1)+cos($lat2)*cos($lat1)*cos($long2-$long1));
         }
-        return ret;
+        return $ret;
     }
 
     function calculDistanceTrajet(Array $parcours): float { 
