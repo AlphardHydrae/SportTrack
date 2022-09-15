@@ -8,13 +8,8 @@ class CalculDistanceImpl implements CalculDistance {
         $R = 6378.137;
         if ($lat1!= null && $long1 != null && $lat2 != null && $long2 != null){
             $lat1 = $lat1*pi()/180;
-<<<<<<< Updated upstream
-            $lat2 = $lat2*pi()/180;
-            $long1 = $long1*pi()/180;
-=======
             $long1 = $long1*pi()/180;
             $lat2 = $lat2*pi()/180;
->>>>>>> Stashed changes
             $long2 = $long2*pi()/180;
             $ret = $R*acos(sin($lat2)*sin($lat1)+cos($lat2)*cos($lat1)*cos($long2-$long1));
         }
@@ -22,13 +17,6 @@ class CalculDistanceImpl implements CalculDistance {
     }
 
     function calculDistanceTrajet(Array $parcours): float { 
-<<<<<<< Updated upstream
-        $ret = 0;
-        if(&parcours != null){
-
-        }
-        return $ret; 
-=======
         $dist = 0;
         if ($parcours != null){
             for ($i = 0; $i < count($parcours) -1; $i++){
@@ -42,7 +30,6 @@ class CalculDistanceImpl implements CalculDistance {
             
         }
         return $dist; 
->>>>>>> Stashed changes
     }
-    }
+}
 ?>
