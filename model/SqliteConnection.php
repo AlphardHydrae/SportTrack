@@ -1,14 +1,14 @@
 <?php 
 class SqliteConnection {
-    function getConnection() {
+    public function getConnection() {
         try {
             $db = new PDO('sqlite:../data/sport_track.db');
             $db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $user = 'sophie_bertrand@zohomail.eu';
 
-            $sth = $db -> prepare("SELECT * FROM Activite JOIN Data ON date = uneActivite WHERE unUtilisateur = '" + $user + "';");
-            $sth -> execute();
+            $sth = $db -> prepare("SELECT * FROM Activite JOIN Data ON date = uneActivite WHERE unUtilisateur = ? ");
+            $sth->execute(array($user));
             $result = $sth -> fetchAll();
 
             $table = '</td><td>';
@@ -23,7 +23,5 @@ class SqliteConnection {
             die();
         }
     }
-
-    getConnection();
 }
 ?>

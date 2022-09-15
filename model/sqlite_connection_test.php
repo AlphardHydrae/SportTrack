@@ -8,6 +8,8 @@
         <th>Altitude</th>
     </thead>
 <?php
-require_once 'SqliteConnction.php';
+require_once 'SqliteConnection.php';
+$that = new SqliteConnection();
+$that -> getConnection();
 ?>
 </table>
