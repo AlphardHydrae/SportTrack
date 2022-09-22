@@ -1,14 +1,28 @@
 <?php 
 class SqliteConnection {
-    try {
-        $db = new PDO('mysql:host=localhost;dbname=$dbname', $root, $AlphardPWD);
-        foreach($dbh->query('SELECT * from Utilisateur') as $row) {
-            print_r($row);
+
+    private static SqliteConnection $sql;
+
+    private function __construct() { /* Constructor */ }
+
+    public static function getInstance() : SqliteConnection {
+        if(!isset(self::$sql)) {
+            self::$sql = new SqliteConnection();
         }
-        $db = null;
-    } catch (PDOException $e) {
-        print "Error!: " . $e->getMessage() . "<br/>";
-        die();
+
+        return self::$sql;
+    }
+
+    public function getConnection() : PDO {
+        try {
+            $db = new PDO('sqlite:../data/sport_track.db');
+            $db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            return $db;
+        } catch (PDOException $e) {
+            print "Error!: " . $e -> getMessage() . "<br/>";
+            die();
+        }
     }
 }
 ?>
