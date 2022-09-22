@@ -11,10 +11,8 @@
 <?php
 require_once 'UserDAO.php';
 
-$that = new UtilisateurDAO();
-$result = $that -> findAll();
+$result = UtilisateurDAO::getInstance() -> findAll();
 
-echo 'test';
 var_dump($result);
 
 $table = '</td><td>';

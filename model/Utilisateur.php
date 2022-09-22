@@ -7,9 +7,10 @@ class Utilisateur{
     private $taille;
     private $poids;
     private $email;
+    private $mdp;
 
     public function  __construct() { /* Constructor */ }
-    public function init($n, $p, $d, $s, $t, $pd, $e){
+    public function init($n, $p, $d, $s, $t, $pd, $e, $m){
         $this -> nom = $n;
         $this -> prenom = $p;
         $this -> dateDeNaissance = $d;
@@ -17,6 +18,7 @@ class Utilisateur{
         $this -> taille = $t;
         $this -> poids = $pd;
         $this -> email = $e;
+        $this -> mdp = $m;
     }
 
     public function getNom() : string { return $this -> nom; }
@@ -26,6 +28,7 @@ class Utilisateur{
     public function getTaille() : string { return $this -> taille; }
     public function getPoids() : string { return $this -> poids; }
     public function getEmail() : string { return $this -> email; }
+    public function getMdp() : string { return $this -> mdp; }
     public function  __toString() : string { return $this -> nom . " " . $this -> prenom; }
 }
 ?>

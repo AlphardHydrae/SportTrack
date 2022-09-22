@@ -1,35 +1,6 @@
 <?php
-require_once 'SqliteConnection.php';
-
-class Utilisateur{
-    private $nom;
-    private $prenom;
-    private $dateDeNaissance;
-    private $sexe;
-    private $taille;
-    private $poids;
-    private $email;
-
-    public function  __construct() { /* Constructor */ }
-    public function init($n, $p, $d, $s, $t, $pd, $e){
-        $this -> nom = $n;
-        $this -> prenom = $p;
-        $this -> dateDeNaissance = $d;
-        $this -> sexe = $s;
-        $this -> taille = $t;
-        $this -> poids = $pd;
-        $this -> email = $e;
-    }
-
-    public function getNom() : string { return $this -> nom; }
-    public function getPrenom() : string { return $this -> prenom; }
-    public function getDob() : string { return $this -> dateDeNaissance; }
-    public function getSexe() : string { return $this -> sexe; }
-    public function getTaille() : string { return $this -> taille; }
-    public function getPoids() : string { return $this -> poids; }
-    public function getEmail() : string { return $this -> email; }
-    public function  __toString() : string { return $this -> nom . " " . $this -> prenom; }
-}
+require_once "SqliteConnection.php";
+require_once "Utilisateur.php";
 
 class UtilisateurDAO {
     private static UtilisateurDAO $dao;
@@ -46,33 +17,57 @@ class UtilisateurDAO {
 
     public final function findAll() : Array {
         $db = SqliteConnection::getInstance() -> getConnection();
-
-        echo 'test';
-
+        
         $stmt = $db -> prepare("SELECT * FROM Utilisateur");
         $stmt -> execute();
 
         return $stmt -> fetchAll(PDO::FETCH_CLASS, 'Utilisateur');
     }
 
-    // public final function insert(Utilisateur $st) : void {
-    //     if($st instanceof Utilisateur){
-    //         $dbc = SqliteConnection::getInstance() -> getConnection();
-    //         // prepare the SQL statement
-    //         $query = "insert into utilisateur(nom, prenom) values (:n,:p)";
-    //         $stmt = $dbc->prepare($query);
+    public final function insert(Utilisateur $obj) : void {
+        if($obj instanceof Utilisateur) {
+            $db = SqliteConnection::getInstance() -> getConnection();
 
-    //         // bind the paramaters
-    //         $stmt->bindValue(':n',$st->getNom(),PDO::PARAM_STR);
-    //         $stmt->bindValue(':p',$st->getPrenom(),PDO::PARAM_STR);
+            $query = "INSERT INTO Utilisateur(nom, prenom, dateDeNaissance, sexe, taille, poids, email, mdp) VALUES (:n,:p,:d,:s,:t,:pd,:e,:m)";
+            $stmt = $db -> prepare($query);
 
-    //         // execute the prepared statement
-    //         $stmt->execute();
+            $stmt->bindValue(':n',$obj -> getNom(), PDO::PARAM_STR);
+            $stmt->bindValue(':p',$obj -> getPrenom(), PDO::PARAM_STR);
+            $stmt->bindValue(':d',$obj -> getDob(), PDO::PARAM_STR);
+            $stmt->bindValue(':s',$obj -> getSexe(), PDO::PARAM_STR);
+            $stmt->bindValue(':t',$obj -> getTaille(), PDO::PARAM_STR);
+            $stmt->bindValue(':pd',$obj -> getPoids(), PDO::PARAM_STR);
+            $stmt->bindValue(':e',$obj -> getEmail(), PDO::PARAM_STR);
+            $stmt->bindValue(':m',$obj -> getMdp(), PDO::PARAM_STR);
+
+            $stmt->execute();
+        }
+    }
+
+    public function delete(Utilisateur $obj) : void {
+        if($obj instanceof Utilisateur) {
+            $db = SqliteConnection::getInstance() -> getConnection();
+
+            $query = "DELETE FROM Utilisateur WHERE email = :e";
+            $stmt = $db -> prepare($query);
+
+            $stmt->bindValue(':e',$obj -> getEmail(), PDO::PARAM_STR);
+
+            $stmt->execute();
+        }
+    }
+
+    // public function update(Utilisateur $obj): void {
+    //     if($obj instanceof Utilisateur) {
+    //         // $db = SqliteConnection::getInstance() -> getConnection();
+
+    //         // $query = "UPDATE Utilisateur SET $param = $newParam WHERE email = :e";
+    //         // $stmt = $db -> prepare($query);
+
+    //         // $stmt->bindValue(':e',$obj -> getEmail(), PDO::PARAM_STR);
+
+    //         // $stmt->execute();
     //     }
     // }
-
-    // public function delete(Utilisateur $obj): void { ... }
-
-    // public function update(Utilisateur $obj): void {...}
 }
 ?>

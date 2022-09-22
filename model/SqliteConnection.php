@@ -7,8 +7,6 @@ class SqliteConnection {
 
     public static function getInstance() : SqliteConnection {
         if(!isset(self::$sql)) {
-            echo "test3";
-
             self::$sql = new SqliteConnection();
         }
 
@@ -17,8 +15,6 @@ class SqliteConnection {
 
     public function getConnection() : PDO {
         try {
-            echo "test4";
-
             $db = new PDO('sqlite:../data/sport_track.db');
             $db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
