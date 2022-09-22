@@ -32,9 +32,16 @@ class ActivityDAO
         $this -> duree = $du;
         $this -> distance = $di;
     }
-
     
-
+    public function getDate() : string { return $this -> date; }
+    public function getDescription() : string { return $this -> description; }
+    public function getFMin() : string { return $this -> fMin; }
+    public function getFMax() : string { return $this -> fMax; }
+    public function getFMoy() : string { return $this -> fMoy; }
+    public function getHDebut() : string { return $this -> hDebut; }
+    public function getHFin() : string { return $this -> hFin; }
+    public function getDuree() : string { return $this -> duree; }
+    public function getDistance() : string { return $this -> distance; }
 }
 
 ?>
