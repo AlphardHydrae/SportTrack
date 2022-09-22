@@ -30,15 +30,11 @@ class ActivityEntryDAO {
             $stmt = $dbc->prepare($query);
 
             // bind the parameters
-            $stmt->bindValue(':n',$st->getDate(),PDO::PARAM_STR);
-            $stmt->bindValue(':p',$st->getDescription(),PDO::PARAM_STR);
-            $stmt->bindValue(':q',$st->getFMin(),PDO::PARAM_STR);
-            $stmt->bindValue(':r',$st->getFMax(),PDO::PARAM_STR);
-            $stmt->bindValue(':s',$st->getFMoy(),PDO::PARAM_STR);
-            $stmt->bindValue(':t',$st->getHDebut(),PDO::PARAM_STR);
-            $stmt->bindValue(':u',$st->getHFin(),PDO::PARAM_STR);
-            $stmt->bindValue(':v',$st->getDuree(),PDO::PARAM_STR);
-            $stmt->bindValue(':w',$st->getDistance(),PDO::PARAM_STR);
+            $stmt->bindValue(':t',$st->getTime(),PDO::PARAM_STR);
+            $stmt->bindValue(':f',$st->getFrequenceCardiaque(),PDO::PARAM_STR);
+            $stmt->bindValue(':la',$st->getLatitude(),PDO::PARAM_STR);
+            $stmt->bindValue(':lo',$st->getLongitude(),PDO::PARAM_STR);
+            $stmt->bindValue(':a',$st->getAltitude(),PDO::PARAM_STR);
 
             // execute the prepared statement
             $stmt->execute();
@@ -49,10 +45,10 @@ class ActivityEntryDAO {
         if($obj instanceof Activite){
             $dbc = SqliteConnection:getInstance()->getConnection();
             // prepare the SQL statement
-            $query = "delete from Activite WHERE date = :d";
+            $query = "delete from Data WHERE time = :t";
             $stmt = $dbc -> prepare($query);
             // bind the parameters
-            $stmt ->bindValue(':d', $obj -> getDate(),PDO::PARAM_STR);
+            $stmt ->bindValue(':t', $obj -> getTime(),PDO::PARAM_STR);
             // execute the prepared statement
             $stmt ->execute();
         }
