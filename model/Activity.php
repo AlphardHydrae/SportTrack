@@ -42,6 +42,16 @@ class Activity
     public function getHFin() : string { return $this -> hFin; }
     public function getDuree() : string { return $this -> duree; }
     public function getDistance() : string { return $this -> distance; }
+    
+    public function setDate(string $date) : string { this.$date -> $date}
+    public function setDescription(string $description) : string { this.$description -> $description }
+    public function setFMin(string $fMin) : string { this.$fMin -> $fMin }
+    public function setFMax(string $fMax) : string { this.$fMax -> $fMax; }
+    public function setFMoy(string $fMoy) : string { this.$fMoy -> $fMoy; }
+    public function setHDebut(string $hDebut) : string { this.$hDebut -> $hDebut; }
+    public function setHFin(string $hFin) : string { this.$hFin -> $hFin; }
+    public function setDuree(string $duree) : string { this.$duree -> $duree; }
+    public function setDistance(string $distance) : string { this.$distance -> $distance; }
 }
 
 ?>
