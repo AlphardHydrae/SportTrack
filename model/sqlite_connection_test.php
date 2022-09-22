@@ -1,24 +1,17 @@
-<table>
-    <thead>
-        <th>Nom</th>
-        <th>Prenom</th>
-        <th>Date de naissance</th>
-        <th>Sexe</th>
-        <th>Taille</th>
-        <th>Poids</th>
-        <th>Email</th>
-    </thead>
 <?php
 require_once 'UserDAO.php';
+require_once 'ActivityDAO.php';
+require_once 'ActivityEntryDAO.php';
 
+echo '<h2>User</h2>';
 $result = UtilisateurDAO::getInstance() -> findAll();
-
 var_dump($result);
 
-$table = '</td><td>';
+echo '<h2>Activity</h2>';
+$result = ActivityDAO::getInstance() -> findAll();
+var_dump($result);
 
-foreach ($result as $row) {
-    echo "<tbody><td>" . $row['nom'] . $table . $row['prenom'] . $table . $row['dateDeNaissance'] . $table . $row['sexe'] . $table . $row['taille'] . $table . $row['poids'] . $table . $row['email'] . "</td></tbody>";
-}
+echo '<h2>Data</h2>';
+$result = ActivityEntryDAO::getInstance() -> findAll();
+var_dump($result);
 ?>
-</table>

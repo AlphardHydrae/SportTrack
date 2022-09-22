@@ -1,7 +1,7 @@
 <?php
     #Ajouter,modifier,supprimer,lister les activités sportives,get
     #require_once("SqliteConnection.php";
-class ActivityDAO 
+class Activity
 {
     /**
      * À l’instar de la séance précédente, écrivez une classe ActivityDAO 

@@ -1,11 +1,11 @@
 <?php
-<?php
-
 require_once('SqliteConnection.php');
+require_once('Data.php');
+
 class ActivityEntryDAO {
     private static ActivityEntryDAO $dao;
 
-    private function __construct() {}
+    private function __construct() { /* Constructor */ }
 
     public static function getInstance(): ActivityEntryDAO {
         if(!isset(self::$dao)) {
@@ -15,15 +15,16 @@ class ActivityEntryDAO {
     }
 
     public final function findAll(): Array{
-        $dbc = SqliteConnection::getInstance()->getConnection();
-        $query = "select * from Data order by time";
-        $stmt = $dbc->query($query);
-        $results = $stmt->fetchALL(PDO::FETCH_CLASS, 'Data');
-        return $results;
+        $dbc = SqliteConnection::getInstance() -> getConnection();
+        
+        $stmt = $dbc -> prepare("SELECT * FROM Data ORDER BY time");
+        $stmt -> execute();
+
+        return $stmt -> fetchAll(PDO::FETCH_CLASS, 'Data');
     }
 
-    public final function insert(Activite $st): void{
-        if($st instanceof Activite){
+    public final function insert(Data $st): void{
+        if($st instanceof Data){
             $dbc = SqliteConnection::getInstance()->getConnection();
             // prepare the SQL statement
             $query = "insert into Data(time,frequenceCardiaque,latitude,longitude,altitude) values (:t, :f, :la, :lo, :a)";
@@ -41,9 +42,9 @@ class ActivityEntryDAO {
         }
     }
 
-    public function delete(Activite $obj): void { 
-        if($obj instanceof Activite){
-            $dbc = SqliteConnection:getInstance()->getConnection();
+    public function delete(Data $obj): void { 
+        if($obj instanceof Data){
+            $dbc = SqliteConnection::getInstance()->getConnection();
             // prepare the SQL statement
             $query = "delete from Data WHERE time = :t";
             $stmt = $dbc -> prepare($query);
@@ -55,20 +56,18 @@ class ActivityEntryDAO {
         
      }
 
-    public function update(Activite $obj): void {
-        //if($obj instanceof Activite){
-            //$dbc = SqliteConnection:getInstance()->getConnection();
-            // prepare the SQL statement
-            //$query = "update from Activite WHERE date = :d";
-            //$stmt = $dbc -> prepare($query);
-            // bind the parameters
-            //$stmt ->bindValue(':d', $obj -> getDate(),PDO::PARAM_STR);
-            // execute the prepared statement
-            //$stmt ->execute();
-        //}
-        
-    }
+    // public function update(Data $obj): void {
+    //     if($obj instanceof Data){
+    //         $dbc = SqliteConnection:getInstance()->getConnection();
+    //         // prepare the SQL statement
+    //         $query = "update from Activite WHERE date = :d";
+    //         $stmt = $dbc -> prepare($query);
+    //         // bind the parameters
+    //         $stmt ->bindValue(':d', $obj -> getDate(),PDO::PARAM_STR);
+    //         // execute the prepared statement
+    //         $stmt ->execute();
+    //     }
+    // }
 }
 
-?>
 ?>

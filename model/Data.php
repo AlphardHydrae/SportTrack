@@ -1,5 +1,5 @@
 <?php
-class data{
+class Data {
     private $time;
     private $frequenceCardiaque;
     private $latitude;
