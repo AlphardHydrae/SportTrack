@@ -1,5 +1,6 @@
 <?php
-require_once "C:\wamp64\www\projet_web_Semestre3\SportTrack\model\CalculDistanceImpl.php";
+require_once "CalculDistanceImpl.php";
+// require_once "C:\wamp64\www\projet_web_Semestre3\SportTrack\model\CalculDistanceImpl.php";
 #include "C:\wamp64\www\projet_web_Semestre3\SportTrack\model\CalculDistanceImpl.php";
 $test = new CalculDistanceImpl();
 $var = $test->calculDistance2PointsGPS(47.644795,-2.776605,47.648510,-2.780145);
