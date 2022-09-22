@@ -3,15 +3,22 @@ class SqliteConnection {
 
     private static SqliteConnection $sql;
 
+    private function __construct() { /* Constructor */ }
+
     public static function getInstance() : SqliteConnection {
         if(!isset(self::$sql)) {
+            echo "test3";
+
             self::$sql = new SqliteConnection();
         }
 
         return self::$sql;
     }
+
     public function getConnection() : PDO {
         try {
+            echo "test4";
+
             $db = new PDO('sqlite:../data/sport_track.db');
             $db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
