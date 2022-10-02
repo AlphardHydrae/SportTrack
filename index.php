@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors', 'On');
-// error_reporting(E_ALL);
-error_reporting(FALSE);
+error_reporting(E_ALL);
+// error_reporting(FALSE);
 define("__ROOT__", __DIR__);
 // Configuration
 require_once(__ROOT__ . '/config.php');

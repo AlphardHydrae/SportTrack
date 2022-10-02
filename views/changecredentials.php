@@ -60,7 +60,7 @@
                 </div>
                 <input type="submit" class="btn-basic" value="Ok">
             </form>
-            <button class="btn-basic" id="logout" onclick="window.location.href='homepage.html'">Retour</button>
+            <button class="btn-basic" id="logout" onclick="history.back()">Retour</button>
         </div>
     </div>
 

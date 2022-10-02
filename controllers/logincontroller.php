@@ -26,9 +26,13 @@ class logincontroller extends Controller
         }
 
         if ($found) {
-            $this->render('homepage', ['email' => $request[$user->getEmail()], 'lastname' => $request[$user->getNom()], 'firstname' => $request[$user->getPrenom()]]);
+            $page = 'homepage';
+            $arr = ['email' => $request[$user->getEmail()], 'lastname' => $request[$user->getNom()], 'firstname' => $request[$user->getPrenom()]];
         } else {
-            $this->render('login_false', []);
+            $page = 'login_false';
+            $arr = [];
         }
+
+        $this->render($page, $arr);
     }
 }
