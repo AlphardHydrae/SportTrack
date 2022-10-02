@@ -15,7 +15,7 @@ class SqliteConnection {
 
     public function getConnection() : PDO {
         try {
-            $db = new PDO('sqlite:../data/sport_track.db');
+            $db = new PDO('sqlite:' . DB_FILE);
             $db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             return $db;
@@ -25,4 +25,3 @@ class SqliteConnection {
         }
     }
 }
-?>

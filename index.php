@@ -10,9 +10,8 @@ require_once(CONTROLLERS_DIR . '/ApplicationController.php');
 
 
 // Add routes here
-// ApplicationController::getInstance()->addRoute('connect', CONTROLLERS_DIR . '/connect');
 // ApplicationController::getInstance()->addRoute('aproposcontroller', CONTROLLERS_DIR . '/aproposcontroller');
-ApplicationController::getInstance()->addRoute('AddUserController', CONTROLLERS_DIR . '/AddUserController.php');
+ApplicationController::getInstance()->addRoute('logincontroller', CONTROLLERS_DIR . '/logincontroller');
 
 
 // Process the request
