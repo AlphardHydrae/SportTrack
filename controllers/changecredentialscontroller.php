@@ -3,12 +3,12 @@ require __ROOT__ . '/controllers/Controller.php';
 require_once __ROOT__ . '/model/Utilisateur.php';
 require_once __ROOT__ . '/model/UserDAO.php';
 
-class signupcontroller extends Controller
+class changecredentialscontroller extends Controller
 {
 
     public function get($request)
     {
-        $this->render('signup', []);
+        $this->render('changecredentials', []);
     }
 
     public function post($request)

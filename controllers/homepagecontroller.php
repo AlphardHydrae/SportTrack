@@ -6,11 +6,11 @@ class homepagecontroller extends Controller
 
     public function get($request)
     {
-        $this->render('homepage', []);
+        $this->render('homepage', ['email' => $request['email'], 'lastname' => $request['lastname'], 'firstname' => $request['firstname']]);
     }
 
     public function post($request)
     {
-        $this->render('changecredentials', ['firstname' => $request['firstname'], 'lastname' => $request['lastname']]);
+        $this->render('changecredentials', []);
     }
 }

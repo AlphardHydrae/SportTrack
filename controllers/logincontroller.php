@@ -16,15 +16,17 @@ class logincontroller extends Controller
         $result = UtilisateurDAO::getInstance()->findAll();
         $i = 0;
         $found = false;
+
         while ($i < count($result) && !$found) {
-            if ($result[$i]->getEmail() == $_POST['email'] && $result[$i]->getMdp() == $_POST['pwd']) {
+            $user = $result[$i];
+            if ($user->getEmail() == $_POST['email'] && $user->getMdp() == $_POST['pwd']) {
                 $found = true;
             }
             $i++;
         }
 
         if ($found) {
-            $this->render('homepage', ['email' => $request['email']]);
+            $this->render('homepage', ['email' => $request[$user->getEmail()], 'lastname' => $request[$user->getNom()], 'firstname' => $request[$user->getPrenom()]]);
         } else {
             $this->render('login_false', []);
         }

@@ -10,10 +10,6 @@ CREATE TABLE Utilisateur (
     poids INTEGER,
     email VARCHAR(100) PRIMARY KEY,
     mdp VARCHAR(50),
-    CONSTRAINT ck_sexe CHECK (
-        sexe = "M"
-        OR sexe = "F"
-    ),
     CONSTRAINT ck_taille CHECK (taille > 0),
     CONSTRAINT ck_poids CHECK (poids > 0)
 );
