@@ -15,6 +15,7 @@ require_once(CONTROLLERS_DIR . '/ApplicationController.php');
 ApplicationController::getInstance()->addRoute('logincontroller', CONTROLLERS_DIR . '/logincontroller');
 ApplicationController::getInstance()->addRoute('loginfalsecontroller', CONTROLLERS_DIR . '/loginfalsecontroller');
 ApplicationController::getInstance()->addRoute('signupcontroller', CONTROLLERS_DIR . '/signupcontroller');
+ApplicationController::getInstance()->addRoute('homepagecontroller', CONTROLLERS_DIR . '/homepagecontroller');
 ApplicationController::getInstance()->addRoute('changecredentialscontroller', CONTROLLERS_DIR . '/changecredentialscontroller');
 
 

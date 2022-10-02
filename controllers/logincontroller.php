@@ -27,7 +27,7 @@ class logincontroller extends Controller
 
         if ($found) {
             $page = 'homepage';
-            $arr = ['email' => $request[$user->getEmail()], 'lastname' => $request[$user->getNom()], 'firstname' => $request[$user->getPrenom()]];
+            $arr = ['email' => $user->getEmail(), 'lastname' => $user->getNom(), 'firstname' => $user->getPrenom()];
         } else {
             $page = 'login_false';
             $arr = [];

@@ -56,7 +56,7 @@ require_once __ROOT__ . "/model/SqliteConnection.php";
             </div>
             <div class="#">
                 <h3>Saisir de nouvelles données</h3>
-                <form action="/loadfile.php" method="POST">
+                <form action="/homepagecontroller" method="POST">
                     <label class="#">Charger un fichier</label>
                     <input type="file" accept=".json" required>
                     <input type="submit" value="Ok">

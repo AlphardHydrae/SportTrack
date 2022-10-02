@@ -11,6 +11,6 @@ class homepagecontroller extends Controller
 
     public function post($request)
     {
-        $this->render('changecredentials', []);
+        $this->render('homepage', []);
     }
 }
