@@ -1,7 +1,6 @@
 DROP TABLE IF EXISTS Data;
 DROP TABLE IF EXISTS Activite;
 DROP TABLE IF EXISTS Utilisateur;
-
 CREATE TABLE Utilisateur (
     nom VARCHAR(50),
     prenom VARCHAR(50),
@@ -18,9 +17,8 @@ CREATE TABLE Utilisateur (
     CONSTRAINT ck_taille CHECK (taille > 0),
     CONSTRAINT ck_poids CHECK (poids > 0)
 );
-
 CREATE TABLE Activite (
-    date DATE PRIMARY KEY,
+    date DATE,
     description VARCHAR(100),
     fMin INTEGER,
     fMax INTEGER,
@@ -39,11 +37,11 @@ CREATE TABLE Activite (
     CONSTRAINT ck_fMoy CHECK (fMoy > 0),
     CONSTRAINT ck_heure CHECK (hFin > hDebut),
     CONSTRAINT ck_duree CHECK (duree > "00:00:00"),
-    CONSTRAINT ck_distance CHECK (distance > 0)
+    CONSTRAINT ck_distance CHECK (distance > 0),
+    CONSTRAINT pk_Activite PRIMARY KEY(date, unUtilisateur)
 );
-
 CREATE TABLE Data (
-    time TIME PRIMARY KEY,
+    time TIME,
     freqCardiaque INTEGER,
     latitude DOUBLE PRECISION,
     longitude DOUBLE PRECISION,
@@ -58,9 +56,9 @@ CREATE TABLE Data (
     CONSTRAINT ck_longitude CHECK (
         longitude > -180
         AND latitude < 180
-    )
+    ),
+    CONSTRAINT pk_Data PRIMARY KEY(time, uneActivite)
 );
-
 INSERT INTO Utilisateur
 VALUES (
         "BERTRAND",
@@ -72,7 +70,6 @@ VALUES (
         "sophie_bertrand@zohomail.eu",
         "alphard"
     );
-
 INSERT INTO Activite
 VALUES (
         "2022-09-13",
@@ -86,6 +83,31 @@ VALUES (
         5,
         "sophie_bertrand@zohomail.eu"
     );
-
 INSERT INTO Data
 VALUES ("07:15:00", 90, 60, 120, 12, "2022-09-13");
+INSERT INTO Utilisateur
+VALUES (
+        "LE-POUPON",
+        "Mattéo",
+        "2003-02-21",
+        "M",
+        180,
+        60,
+        "lepoupon_matteo@gmail.com",
+        "aenigmanta"
+    );
+INSERT INTO Activite
+VALUES (
+        "2022-09-15",
+        "walk",
+        90,
+        120,
+        105,
+        "07:15:00",
+        "07:50:00",
+        "00:35:00",
+        5,
+        "lepoupon_matteo@gmail.com"
+    );
+INSERT INTO Data
+VALUES ("07:10:00", 90, 60, 120, 12, "2022-09-13");

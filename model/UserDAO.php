@@ -28,19 +28,28 @@ class UtilisateurDAO {
         if($obj instanceof Utilisateur) {
             $db = SqliteConnection::getInstance() -> getConnection();
 
-            $query = "INSERT INTO Utilisateur(nom, prenom, dateDeNaissance, sexe, taille, poids, email, mdp) VALUES (:n,:p,:d,:s,:t,:pd,:e,:m)";
+            $query = "INSERT INTO Utilisateur(nom, prenom, dateDeNaissance, sexe, taille, poids, email, mdp) VALUES (?,?,?,?,?,?,?,?)";
             $stmt = $db -> prepare($query);
 
-            $stmt->bindValue(':n',$obj -> getNom(), PDO::PARAM_STR);
-            $stmt->bindValue(':p',$obj -> getPrenom(), PDO::PARAM_STR);
-            $stmt->bindValue(':d',$obj -> getDob(), PDO::PARAM_STR);
-            $stmt->bindValue(':s',$obj -> getSexe(), PDO::PARAM_STR);
-            $stmt->bindValue(':t',$obj -> getTaille(), PDO::PARAM_STR);
-            $stmt->bindValue(':pd',$obj -> getPoids(), PDO::PARAM_STR);
-            $stmt->bindValue(':e',$obj -> getEmail(), PDO::PARAM_STR);
-            $stmt->bindValue(':m',$obj -> getMdp(), PDO::PARAM_STR);
+            // $stmt->bindValue(':n',$obj -> getNom(), PDO::PARAM_STR);
+            // $stmt->bindValue(':p',$obj -> getPrenom(), PDO::PARAM_STR);
+            // $stmt->bindValue(':d',$obj -> getDob(), PDO::PARAM_STR);
+            // $stmt->bindValue(':s',$obj -> getSexe(), PDO::PARAM_STR);
+            // $stmt->bindValue(':t',$obj -> getTaille(), PDO::PARAM_STR);
+            // $stmt->bindValue(':pd',$obj -> getPoids(), PDO::PARAM_STR);
+            // $stmt->bindValue(':e',$obj -> getEmail(), PDO::PARAM_STR);
+            // $stmt->bindValue(':m',$obj -> getMdp(), PDO::PARAM_STR);
 
-            $stmt->execute();
+            $n = $obj -> getNom();
+            $p = $obj -> getPrenom();
+            $d = $obj -> getDob();
+            $s = $obj -> getSexe();
+            $t = $obj -> getTaille();
+            $pd = $obj -> getPoids();
+            $e = $obj -> getEmail();
+            $m = $obj -> getMdp();
+
+            $stmt -> execute(array($n, $p, $d, $s, $t, $pd, $e, $m));
         }
     }
 
