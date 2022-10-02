@@ -20,43 +20,43 @@
             <div class="line"></div>
             <form action="/signupcontroller" method="POST">
                 <div class="form-field">
-                    <label class="#">Nom</label>
+                    <label class="text-label">Nom</label>
                     <input type="text" class="text-field" name="lastname" placeholder="Nom" required>
                 </div>
                 <div class="form-field">
-                    <label class="#">Prénom</label>
+                    <label class="text-label">Prénom</label>
                     <input type="text" class="text-field" name="firstname" placeholder="Prénom" required>
                 </div>
                 <div class="form-field">
-                    <label class="#">Adresse mail</label>
+                    <label class="text-label">Adresse mail</label>
                     <input type="email" class="text-field" name="email" placeholder="Adresse mail" required>
                 </div>
                 <div class="form-field">
-                    <label class="#">Mot de passe</label>
+                    <label class="text-label">Mot de passe</label>
                     <input type="password" class="text-field" placeholder="Mot de passe" name="pwd" required>
                 </div>
                 <div class="form-field">
-                    <label class="#">Date de naissance</label><br>
+                    <label class="text-label">Date de naissance</label><br>
                     <input type="date" id="date-field" name="dob" required>
                 </div>
                 <div class="form-field">
-                    <label class="#">Sexe</label><br>
-                    <input type="radio" class="#" id="h" name="gender">
+                    <label class="text-label">Sexe</label><br>
+                    <input type="radio" class="btn-radio" id="h" name="gender">
                     <label for="h">Masculin</label>
-                    <input type="radio" class="#" id="f" name="gender">
+                    <input type="radio" class="btn-radio" id="f" name="gender">
                     <label for="f">Féminin</label>
-                    <input type="radio" class="#" id="a" name="gender">
+                    <input type="radio" class="btn-radio" id="a" name="gender">
                     <label for="a">Autre</label>
                 </div>
                 <div class="form-field">
-                    <label class="#">Taille (cm)</label>
-                    <input type="range" id="#" min="0" max="250" name="height" oninput="this.nextElementSibling.value = this.value">
-                    <output class="#">150</output>
+                    <label class="text-label">Taille (cm)</label>
+                    <input type="range" class="btn-range" min="0" max="250" name="height" oninput="this.nextElementSibling.value = this.value">
+                    <output class="slider-output">150</output>
                 </div>
                 <div class="form-field">
-                    <label class="#">Poids (kg)</label>
-                    <input type="range" id="#" min="0" max="250" name="weight" oninput="this.nextElementSibling.value = this.value">
-                    <output class="#">60</output>
+                    <label class="text-label">Poids (kg)</label>
+                    <input type="range" class="btn-range" min="0" max="250" name="weight" oninput="this.nextElementSibling.value = this.value">
+                    <output class="slider-output">60</output>
                 </div>
                 <input type="submit" class="btn-basic" value="Ok">
             </form>
