@@ -27,6 +27,6 @@ class signupcontroller extends Controller
 
         $result = UtilisateurDAO::getInstance()->insert($user);
 
-        $this->render('homepage', ['email' => $request[$user->getEmail()], 'lastname' => $request[$user->getNom()], 'firstname' => $request[$user->getPrenom()]]);
+        $this->render('homepage', ['email' => $user->getEmail(), 'lastname' => $user->getNom(), 'firstname' => $user->getPrenom()]);
     }
 }

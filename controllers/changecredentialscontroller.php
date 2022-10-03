@@ -8,11 +8,11 @@ class changecredentialscontroller extends Controller
 
     public function get($request)
     {
-        $this->render('changecredentials', []);
+        $this->render('changecredentials', ['email' => $request['email'], 'lastname' => $request['lastname'], 'firstname' => $request['firstname']]);
     }
 
     public function post($request)
     {
-        $this->render('homepage', ['email' => $request[$user->getEmail()], 'lastname' => $request[$user->getNom()], 'firstname' => $request[$user->getPrenom()]]);
+        $this->render('homepage', ['email' => $request['email'], 'lastname' => $request['lastname'], 'firstname' => $request['firstname']]);
     }
 }

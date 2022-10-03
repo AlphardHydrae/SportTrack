@@ -241,6 +241,18 @@ body {
   cursor: pointer;
 }
 
+.btn-ok-file {
+  appearance: none;
+  position: relative;
+  border-color: #790978;
+  border-radius: 10%;
+  background-color: white;
+}
+
+.btn-ok-file:hover {
+  cursor: pointer;
+}
+
 .table-container {
   position: relative;
 }
