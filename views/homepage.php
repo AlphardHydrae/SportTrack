@@ -61,7 +61,7 @@ require_once __ROOT__ . "/model/SqliteConnection.php";
                     <input type="submit" class="btn-ok-file" value="Ok">
                 </form>
             </div>
-            <button class="btn-basic" id="alt" onclick="window.location.href='/changecredentialscontroller'">Modifier mes données</button><br>
+            <button class="btn-basic" id="alt" onclick="window.location.href='/changecredentialscontroller?email= <?php echo $data['email'] ?>'">Modifier mes données</button><br>
             <button class="btn-basic" id="logout" onclick="window.location.href='/logincontroller'">Déconnexion</button>
         </div>
     </div>
