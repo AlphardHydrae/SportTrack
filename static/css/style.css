@@ -149,13 +149,12 @@ body {
 
 .btn-range {
   appearance: none;
-  width: 80%;
+  width: 70%;
   height: 0.1rem;
   border-radius: 5px;
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
-  -webkit-transition: 0.2s;
   transition: opacity 0.2s;
 }
 
@@ -203,7 +202,7 @@ body {
 .btn-basic:hover {
   background-color: #9f269e;
   color: white;
-  box-shadow: 0 16px 32px 0 rgba(16, 39, 112, 0.2);
+  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
   cursor: pointer;
 }
 
@@ -257,11 +256,12 @@ body {
   padding-bottom: 12px;
   text-align: center;
   color: black;
+  background-color: gainsboro;
 }
 
 .table td,
 .table th {
-  border: 1px solid #ddd;
+  border: 1px solid darkgray;
   padding: 8px;
   font-size: 17px;
 }

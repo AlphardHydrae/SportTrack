@@ -39,10 +39,9 @@ require_once __ROOT__ . "/model/SqliteConnection.php";
                         <?php
                         $dbc = SqliteConnection::getInstance()->getConnection();
 
-                        $query = "select * from Activite where unUtilisateur = :e order by date";
+                        $query = "SELECT * FROM Activite WHERE unUtilisateur = ? ORDER BY date";
                         $stmt = $dbc->prepare($query);
-                        $stmt->bindValue(':e', $data['email'], PDO::PARAM_STR);
-                        $stmt->execute();
+                        $stmt->execute(array($data['email']));
                         $result = $stmt->fetchAll();
 
                         $table = '</td><td>';
@@ -58,7 +57,7 @@ require_once __ROOT__ . "/model/SqliteConnection.php";
                 <h3>Saisir de nouvelles données</h3>
                 <form action="/homepagecontroller" method="POST">
                     <label class="#">Charger un fichier</label>
-                    <input type="file" accept=".json" required>
+                    <input type="file" accept=".json" name="file" required>
                     <input type="submit" value="Ok">
                 </form>
             </div>

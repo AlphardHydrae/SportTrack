@@ -11,7 +11,7 @@
 
 <body>
   <div class="main">
-    <div class="container" id="login_false, login">
+    <div class="container" id="login_false">
       <div class="header">
         <header id="head">Se connecter</header>
       </div>
