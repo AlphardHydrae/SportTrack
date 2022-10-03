@@ -33,7 +33,7 @@ class ActivityDAO
         if ($st instanceof Activity) {
             $dbc = SqliteConnection::getInstance()->getConnection();
             // prepare the SQL statement
-            $query = "INSERT INTO Activite(date,description,fMin,fMax,fMoy,hDebut,hFin,duree,distance) VALUES (?,?,?,?,?,?,?,?,?)";
+            $query = "INSERT INTO Activite(date,description,fMin,fMax,fMoy,hDebut,hFin,duree,distance,unUtilisateur) VALUES (?,?,?,?,?,?,?,?,?,?)";
             $stmt = $dbc->prepare($query);
 
             // bind the parameters
@@ -56,9 +56,10 @@ class ActivityDAO
             $u = $st->getHFin();
             $v = $st->getDuree();
             $w = $st->getDistance();
+            $x = $st->getUtilisateur();
 
             // execute the prepared statement
-            $stmt->execute(array($n, $p, $q, $r, $s, $t, $u, $v, $w));
+            $stmt->execute(array($n, $p, $q, $r, $s, $t, $u, $v, $w, $x));
         }
     }
 

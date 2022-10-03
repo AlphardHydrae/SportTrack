@@ -27,7 +27,7 @@ class ActivityEntryDAO {
         if($st instanceof Data){
             $dbc = SqliteConnection::getInstance()->getConnection();
             // prepare the SQL statement
-            $query = "insert into Data(time,frequenceCardiaque,latitude,longitude,altitude) values (:t, :f, :la, :lo, :a)";
+            $query = "insert into Data(time,freqCardiaque,latitude,longitude,altitude) values (:t, :f, :la, :lo, :a)";
             $stmt = $dbc->prepare($query);
 
             // bind the parameters
@@ -69,5 +69,3 @@ class ActivityEntryDAO {
     //     }
     // }
 }
-
-?>

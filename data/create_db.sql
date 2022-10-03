@@ -34,7 +34,7 @@ CREATE TABLE Activite (
     CONSTRAINT ck_heure CHECK (hFin > hDebut),
     CONSTRAINT ck_duree CHECK (duree > "00:00:00"),
     CONSTRAINT ck_distance CHECK (distance > 0),
-    CONSTRAINT pk_Activite PRIMARY KEY(date, unUtilisateur)
+    CONSTRAINT pk_Activite PRIMARY KEY(date, description, unUtilisateur)
 );
 CREATE TABLE Data (
     time TIME,
