@@ -13,6 +13,8 @@ class signupcontroller extends Controller
 
     public function post($request)
     {
+        session_start();
+
         $n = $_POST['lastname'];
         $p = $_POST['firstname'];
         $d = $_POST['dob'];
@@ -33,16 +35,15 @@ class signupcontroller extends Controller
 
         $result = UtilisateurDAO::getInstance()->insert($user);
 
-        // session_start();
-        // $_SESSION['lastname'] = $user->getNom();
-        // $_SESSION['firstname'] = $user->getPrenom();
-        // $_SESSION['dob'] = $user->getDob();
-        // $_SESSION['gender'] = $user->getSexe();
-        // $_SESSION['height'] = $user->getTaille();
-        // $_SESSION['weight'] = $user->getPoids();
-        // $_SESSION["email"] = $user->getEmail();
-        // $_SESSION['pwd'] = $user->getMdp();
+        $_SESSION['lastname'] = $user->getNom();
+        $_SESSION['firstname'] = $user->getPrenom();
+        $_SESSION['dob'] = $user->getDob();
+        $_SESSION['gender'] = $user->getSexe();
+        $_SESSION['height'] = $user->getTaille();
+        $_SESSION['weight'] = $user->getPoids();
+        $_SESSION["email"] = $user->getEmail();
+        $_SESSION['pwd'] = $user->getMdp();
 
-        $this->render('homepage', ['email' => $user->getEmail(), 'lastname' => $user->getNom(), 'firstname' => $user->getPrenom()]);
+        $this->render('homepage', $_SESSION);
     }
 }

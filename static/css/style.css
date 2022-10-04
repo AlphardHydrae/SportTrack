@@ -241,6 +241,31 @@ body {
   cursor: pointer;
 }
 
+#btn-alt-delete {
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 200ms linear;
+  text-align: center;
+  border: none;
+  position: relative;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  color: #bb0f0f;
+  padding: 0.75rem;
+}
+
+#btn-alt-delete:hover {
+  border: none;
+  background-color: none;
+  box-shadow: none;
+  text-shadow: 2px 6px 0 rgba(16, 39, 112, 0.2);
+  cursor: pointer;
+}
+
 .btn-ok-file {
   appearance: none;
   position: relative;
@@ -251,6 +276,11 @@ body {
 
 .btn-ok-file:hover {
   cursor: pointer;
+}
+
+.btn-footer {
+  position: relative;
+  align-items: center;
 }
 
 .table-container {

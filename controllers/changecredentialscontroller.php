@@ -8,11 +8,35 @@ class changecredentialscontroller extends Controller
 
     public function get($request)
     {
-        $this->render('changecredentials', ['email' => $request['email'], 'lastname' => $request['lastname'], 'firstname' => $request['firstname']]);
+        session_start();
+
+        $this->render('changecredentials', $_SESSION);
     }
 
     public function post($request)
     {
-        $this->render('homepage', ['email' => $request['email'], 'lastname' => $request['lastname'], 'firstname' => $request['firstname']]);
+        session_start();
+
+        $n = $_POST['lastname'];
+        $p = $_POST['firstname'];
+        $d = $_POST['dob'];
+
+        if ($_POST['genderM'] == "on") {
+            $s = "M";
+        } else {
+            $s = "F";
+        }
+
+        $t = $_POST['height'];
+        $pd = $_POST['weight'];
+        $e = $_SESSION['email'];
+        $m = $_POST['pwd'];
+
+        $user = new Utilisateur();
+        $user->init($n, $p, $d, $s, $t, $pd, $e, $m);
+
+        $result = UtilisateurDAO::getInstance()->update($user);
+
+        $this->render('homepage', $_SESSION);
     }
 }

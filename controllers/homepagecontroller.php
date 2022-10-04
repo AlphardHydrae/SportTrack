@@ -10,11 +10,14 @@ class homepagecontroller extends Controller
 
     public function get($request)
     {
-        $this->render('homepage', ['email' => $request['email'], 'lastname' => $request['lastname'], 'firstname' => $request['firstname']]);
+        session_start();
+        $this->render('homepage', $_SESSION);
     }
 
     public function post($request)
     {
+        session_start();
+
         $json = json_decode(file_get_contents($_FILES['file']['tmp_name']), true);
 
         $dist = new CalculDistanceImpl();
@@ -60,7 +63,7 @@ class homepagecontroller extends Controller
             $du = strtotime($hF) - strtotime($hD);
 
             $di = ($dist->calculDistanceTrajet($arr)) * 100;
-            $u = $request['email'];
+            $u = $_SESSION['email'];
 
             $activity = new Activity();
             $activity->init($date, $de, $fMi, $fMa, $fMo, $hD, $hF, $du, $di, $u);
@@ -90,6 +93,6 @@ class homepagecontroller extends Controller
             }
         }
 
-        $this->render('homepage', ['email' => $request['email'], 'lastname' => $request['lastname'], 'firstname' => $request['firstname']]);
+        $this->render('homepage', $_SESSION);
     }
 }

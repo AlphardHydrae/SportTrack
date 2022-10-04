@@ -55,13 +55,13 @@ require_once __ROOT__ . "/model/SqliteConnection.php";
             </div>
             <div class="#">
                 <h3>Saisir de nouvelles données</h3>
-                <form action="/homepagecontroller?email= <?php echo $data['email'] ?>" method="POST" enctype="multipart/form-data">
+                <form action="/homepagecontroller" method="POST" enctype="multipart/form-data">
                     <label class="#">Charger un fichier</label>
                     <input type="file" class="btn-file" accept=".json" name="file" required>
                     <input type="submit" class="btn-ok-file" value="Ok">
                 </form>
             </div>
-            <button class="btn-basic" id="alt" onclick="window.location.href='/changecredentialscontroller?email= <?php echo $data['email'] ?>'">Modifier mes données</button><br>
+            <button class="btn-basic" id="alt" onclick="window.location.href='/changecredentialscontroller'">Modifier mes données</button><br>
             <button class="btn-basic" id="logout" onclick="window.location.href='/logoutcontroller'">Déconnexion</button>
         </div>
     </div>

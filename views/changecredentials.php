@@ -21,11 +21,11 @@
             <form action="/changecredentialscontroller" method="POST">
                 <div class="form-field">
                     <label class="text-label">Nom</label>
-                    <input type="text" class="text-field" name="lastname" placeholder="Nom" required>
+                    <input type="text" class="text-field" name="lastname" value="<?php echo $data['lastname']; ?>" required>
                 </div>
                 <div class="form-field">
                     <label class="text-label">Prénom</label>
-                    <input type="text" class="text-field" name="firstname" placeholder="Prénom" required>
+                    <input type="text" class="text-field" name="firstname" value="<?php echo $data['firstname']; ?>" required>
                 </div>
                 <div class="form-field">
                     <label class="text-label">Adresse mail</label>
@@ -37,30 +37,35 @@
                 </div>
                 <div class="form-field">
                     <label class="text-label">Date de naissance</label><br>
-                    <input type="date" id="date-field" name="dob" required>
+                    <input type="date" id="date-field" value="<?php echo $data['dob']; ?>" name="dob" required>
                 </div>
                 <div class="form-field">
                     <label class="text-label">Sexe</label><br>
-                    <input type="radio" class="btn-radio" id="h" name="gender">
+                    <input type="radio" class="btn-radio" id="h" name="genderM">
                     <label for="h">Masculin</label>
-                    <input type="radio" class="btn-radio" id="f" name="gender">
+                    <input type="radio" class="btn-radio" id="f" name="genderF">
                     <label for="f">Féminin</label>
                     <!-- <input type="radio" class="btn-radio" id="a" name="gender">
                     <label for="a">Autre</label> -->
                 </div>
                 <div class="form-field">
                     <label class="text-label">Taille (cm)</label>
-                    <input type="range" class="btn-range" min="0" max="250" name="height" oninput="this.nextElementSibling.value = this.value">
-                    <output class="slider-output">150</output>
+                    <input type="range" class="btn-range" min="0" max="250" value="<?php echo $data['height']; ?>" name="height" oninput="this.nextElementSibling.value = this.value">
+                    <output class="slider-output"><?php echo $data['height'] ?></output>
                 </div>
                 <div class="form-field">
                     <label class="text-label">Poids (kg)</label>
-                    <input type="range" class="btn-range" min="0" max="250" name="weight" oninput="this.nextElementSibling.value = this.value">
-                    <output class="slider-output">60</output>
+                    <input type="range" class="btn-range" min="0" max="250" value="<?php echo $data['weight']; ?>" name="weight" oninput="this.nextElementSibling.value = this.value">
+                    <output class="slider-output"><?php echo $data['weight'] ?></output>
                 </div>
                 <input type="submit" class="btn-basic" value="Ok">
             </form>
-            <button class="btn-basic" id="logout" onclick="history.back()">Retour</button>
+            <div class="btn-footer">
+                <form action="/logoutcontroller" method="POST">
+                    <input type="submit" class="btn-basic" id="btn-alt-delete" value="Supprimer">
+                </form>
+                <button class="btn-basic" id="logout" onclick="history.back()">Retour</button>
+            </div>
         </div>
     </div>
 
