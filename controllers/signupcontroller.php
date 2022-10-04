@@ -16,7 +16,13 @@ class signupcontroller extends Controller
         $n = $_POST['lastname'];
         $p = $_POST['firstname'];
         $d = $_POST['dob'];
-        $s = $_POST['gender'];
+
+        if ($_POST['genderM'] == "on") {
+            $s = "M";
+        } else {
+            $s = "F";
+        }
+
         $t = $_POST['height'];
         $pd = $_POST['weight'];
         $e = $_POST['email'];
@@ -26,6 +32,16 @@ class signupcontroller extends Controller
         $user->init($n, $p, $d, $s, $t, $pd, $e, $m);
 
         $result = UtilisateurDAO::getInstance()->insert($user);
+
+        // session_start();
+        // $_SESSION['lastname'] = $user->getNom();
+        // $_SESSION['firstname'] = $user->getPrenom();
+        // $_SESSION['dob'] = $user->getDob();
+        // $_SESSION['gender'] = $user->getSexe();
+        // $_SESSION['height'] = $user->getTaille();
+        // $_SESSION['weight'] = $user->getPoids();
+        // $_SESSION["email"] = $user->getEmail();
+        // $_SESSION['pwd'] = $user->getMdp();
 
         $this->render('homepage', ['email' => $user->getEmail(), 'lastname' => $user->getNom(), 'firstname' => $user->getPrenom()]);
     }

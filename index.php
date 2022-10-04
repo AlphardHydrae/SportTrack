@@ -17,6 +17,7 @@ ApplicationController::getInstance()->addRoute('loginfalsecontroller', CONTROLLE
 ApplicationController::getInstance()->addRoute('signupcontroller', CONTROLLERS_DIR . '/signupcontroller');
 ApplicationController::getInstance()->addRoute('homepagecontroller', CONTROLLERS_DIR . '/homepagecontroller');
 ApplicationController::getInstance()->addRoute('changecredentialscontroller', CONTROLLERS_DIR . '/changecredentialscontroller');
+ApplicationController::getInstance()->addRoute('logoutcontroller', CONTROLLERS_DIR . '/logoutcontroller');
 
 
 // Process the request

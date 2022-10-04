@@ -16,7 +16,6 @@ class homepagecontroller extends Controller
     public function post($request)
     {
         $json = json_decode(file_get_contents($_FILES['file']['tmp_name']), true);
-        // print_r($json);
 
         $dist = new CalculDistanceImpl();
         $arr = array();
@@ -33,57 +32,34 @@ class homepagecontroller extends Controller
             $fMa = 0;
 
             foreach ($json['data'] as $d) {
-                $t = $d['time'];
-                $f = $d['cardio_frequency'];
-
-                if ($f > $fMa) {
-                    $fMa = $f;
+                if ($d['cardio_frequency'] > $fMa) {
+                    $fMa = $d['cardio_frequency'];
                 }
 
-                if ($f < $fMi) {
-                    $fMi = $f;
+                if ($d['cardio_frequency'] < $fMi) {
+                    $fMi = $d['cardio_frequency'];
                 }
 
-                $la = $d['latitude'];
-                $lo = $d['longitude'];
-
-                array_push($arr, (array("latitude" => $la, "longitude" => $lo)));
-
-                $alt = $d['altitude'];
-
-                $data = new Data();
-                $data->init($t, $f, $la, $lo, $alt);
-
-                try {
-                    ActivityEntryDAO::getInstance()->insert($data);
-                } catch (Exception $e) {
-                    print "Error!: " . $e->getMessage() . "<br/>";
-                }
+                array_push($arr, (array("latitude" => $d['latitude'], "longitude" => $d['longitude'])));
             }
 
-            $fMo = ($fMi + $fMa) / 2;
+            $fMo = round(($fMi + $fMa) / 2);
 
             $hD_temp = $json['data'][0]['time'];
             $hours = substr($hD_temp, 0, 2);
             $min = substr($hD_temp, 3, 2);
             $sec = substr($hD_temp, 6, 2);
-            $hD_calc = intval($hours . $min . $sec);
-            $hD = $hours . ":" . $min . ":" . $sec;
+            $hD = strval($hours . ":" . $min . ":" . $sec);
 
             $hF_temp = $json['data'][count($json['data']) - 1]['time'];
             $hours = substr($hF_temp, 0, 2);
             $min = substr($hF_temp, 3, 2);
             $sec = substr($hF_temp, 6, 2);
-            $hF_calc = intval($hours . $min . $sec);
-            $hF = $hours . ":" . $min . ":" . $sec;
+            $hF = strval($hours . ":" . $min . ":" . $sec);
 
-            $du = $hF_calc - $hD_calc;
-            // $hours = substr($du_temp, 0, 2);
-            // $min = substr($du_temp, 3, 2);
-            // $sec = substr($du_temp, 6, 2);
-            // $du = $hours . ":" . $min . ":" . $sec;
+            $du = strtotime($hF) - strtotime($hD);
 
-            $di = $dist->calculDistanceTrajet($arr);
+            $di = ($dist->calculDistanceTrajet($arr)) * 100;
             $u = $request['email'];
 
             $activity = new Activity();
@@ -91,6 +67,24 @@ class homepagecontroller extends Controller
 
             try {
                 ActivityDAO::getInstance()->insert($activity);
+
+                foreach ($json['data'] as $d) {
+                    $t = $d['time'];
+                    $f = $d['cardio_frequency'];
+                    $la = $d['latitude'];
+                    $lo = $d['longitude'];
+                    $alt = $d['altitude'];
+                    $act = $activity->getDate();
+
+                    $data = new Data();
+                    $data->init($t, $f, $la, $lo, $alt, $act);
+
+                    try {
+                        ActivityEntryDAO::getInstance()->insert($data);
+                    } catch (Exception $e) {
+                        print "Error!: " . $e->getMessage() . "<br/>";
+                    }
+                }
             } catch (Exception $e) {
                 print "Error!: " . $e->getMessage() . "<br/>";
             }

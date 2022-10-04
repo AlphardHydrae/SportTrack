@@ -28,6 +28,16 @@ class logincontroller extends Controller
         if ($found) {
             $page = 'homepage';
             $arr = ['email' => $user->getEmail(), 'lastname' => $user->getNom(), 'firstname' => $user->getPrenom()];
+
+            // session_start();
+            // $_SESSION['lastname'] = $user->getNom();
+            // $_SESSION['firstname'] = $user->getPrenom();
+            // $_SESSION['dob'] = $user->getDob();
+            // $_SESSION['gender'] = $user->getSexe();
+            // $_SESSION['height'] = $user->getTaille();
+            // $_SESSION['weight'] = $user->getPoids();
+            // $_SESSION["email"] = $user->getEmail();
+            // $_SESSION['pwd'] = $user->getMdp();
         } else {
             $page = 'login_false';
             $arr = [];

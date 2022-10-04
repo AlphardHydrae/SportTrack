@@ -41,12 +41,12 @@
                 </div>
                 <div class="form-field">
                     <label class="text-label">Sexe</label><br>
-                    <input type="radio" class="btn-radio" id="h" name="gender">
+                    <input type="radio" class="btn-radio" id="h" name="genderM">
                     <label for="h">Masculin</label>
-                    <input type="radio" class="btn-radio" id="f" name="gender">
+                    <input type="radio" class="btn-radio" id="f" name="genderF">
                     <label for="f">Féminin</label>
-                    <input type="radio" class="btn-radio" id="a" name="gender">
-                    <label for="a">Autre</label>
+                    <!-- <input type="radio" class="btn-radio" id="a" name="gender">
+                    <label for="a">Autre</label> -->
                 </div>
                 <div class="form-field">
                     <label class="text-label">Taille (cm)</label>

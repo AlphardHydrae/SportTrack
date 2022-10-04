@@ -47,7 +47,7 @@ require_once __ROOT__ . "/model/SqliteConnection.php";
                         $table = '</td><td>';
 
                         foreach ($result as $activity) {
-                            echo "<td>" . $activity['date'] . $table . $activity['description'] . $table . $activity['fMin'] . $table . $activity['fMax'] . $table . $activity['fMoy'] . $table . $activity['hDebut'] . $table . $activity['hFin'] . $table . $activity['duree'] . "</td>";
+                            echo "<tr><td>" . $activity['date'] . $table . $activity['description'] . $table . $activity['fMin'] . $table . $activity['fMax'] . $table . $activity['fMoy'] . $table . $activity['hDebut'] . $table . $activity['hFin'] . $table . $activity['duree'] . "</td></tr>";
                         }
                         ?>
                     </tbody>
@@ -62,7 +62,7 @@ require_once __ROOT__ . "/model/SqliteConnection.php";
                 </form>
             </div>
             <button class="btn-basic" id="alt" onclick="window.location.href='/changecredentialscontroller?email= <?php echo $data['email'] ?>'">Modifier mes données</button><br>
-            <button class="btn-basic" id="logout" onclick="window.location.href='/logincontroller'">Déconnexion</button>
+            <button class="btn-basic" id="logout" onclick="window.location.href='/logoutcontroller'">Déconnexion</button>
         </div>
     </div>
 
