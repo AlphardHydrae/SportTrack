@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>SportTrack</title>
-  <link href="/static/css/style.css" rel="stylesheet">
+  <meta name="description" content="Sign Up">
+
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <title>Log In</title>
 </head>
 
 <body>

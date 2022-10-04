@@ -1,5 +1,5 @@
 <?php
-require(__ROOT__ . '/controllers/Controller.php');
+require __ROOT__ . '/controllers/Controller.php';
 require_once __ROOT__ . "/model/CalculDistanceImpl.php";
 require_once __ROOT__ . '/model/ActivityDAO.php';
 require_once __ROOT__ . '/model/Data.php';
