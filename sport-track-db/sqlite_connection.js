@@ -11,4 +11,5 @@ class SqliteConnection {
   }
 }
 
-module.exports = SqliteConnection;
+let connection = new SqliteConnection();
+module.exports = connection;

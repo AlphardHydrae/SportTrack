@@ -2,7 +2,7 @@ const db_connection = require("./sqlite_connection");
 
 class ActivityDAO {
   constructor(database) {
-    this.db = db;
+    this.db = database;
   }
 
   insert(values, callback) {

@@ -1,8 +1,8 @@
 const db_connection = require("./sqlite_connection");
 
 class UserDAO {
-  constructor(database) {
-    this.db = db;
+  constructor() {
+    this.db = db_connection;
   }
 
   insert(values, callback) {
@@ -68,4 +68,5 @@ class UserDAO {
   }
 }
 
-module.exports = UserDAO;
+let user = new UserDAO();
+module.exports = user;

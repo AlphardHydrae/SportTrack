@@ -4,10 +4,7 @@ const activity_dao = require("./sport-track-db").activity_dao;
 const activity_entry_dao = require("./sport-track-db").activity_entry_dao;
 
 function main() {
-  let db = new SqliteConnection();
-  let user = new UserDAO(db);
-
-  user.findAll((err, rows) => {
+  user_dao.findAll((err, rows) => {
     if (err) {
       throw err;
     }
