@@ -32,7 +32,7 @@ class CalculDistance{
             let long1 = array.data[i].longitude;
             let lat2 = array.data[i + 1].latitude;
             let long2 = array.data[i + 1].longitude;
-            dist += calculDistance2PointsGPS(lat1, long1, lat2, long2);
+            dist += this.calculDistance2PointsGPS(lat1, long1, lat2, long2);
             }
         }
         return dist;
@@ -91,5 +91,5 @@ const list = {
     ],
   };
 
-c1 = new CalculDistance();
+let c1 = new CalculDistance();
 console.log(c1.calculDistanceTrajet(list));

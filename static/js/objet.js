@@ -1,11 +1,5 @@
 function CalculDistance() {
   this.R = 6378.137;
-  this.calculDistance2PointsGPS = function(lat1, long1, lat2, long2){
-    return false;
-  }
-  this.calculDistanceTrajet = function(parcours){
-    return false;
-  }
 }
     
 CalculDistance.prototype.calculDistance2PointsGPS = function(lat1, long1, lat2, long2){
@@ -36,7 +30,7 @@ CalculDistance.prototype.calculDistanceTrajet = function(parcours){
       let long1 = array.data[i].longitude;
       let lat2 = array.data[i + 1].latitude;
       let long2 = array.data[i + 1].longitude;
-      dist += calculDistance2PointsGPS(lat1, long1, lat2, long2);
+      dist += this.calculDistance2PointsGPS(lat1, long1, lat2, long2);
     }
   }
   return dist;
@@ -93,4 +87,5 @@ const list = {
   ],
 };
 
-console.log(calculDistanceTrajet(list));
+let c1 = new CalculDistance();
+console.log(c1.calculDistanceTrajet(list));
