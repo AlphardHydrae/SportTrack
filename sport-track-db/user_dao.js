@@ -1,4 +1,4 @@
-const db = require("./sqlite_connection");
+const db_connection = require("./sqlite_connection");
 
 class UserDAO {
   constructor(database) {
@@ -66,8 +66,6 @@ class UserDAO {
       }
     });
   }
-
-  // this.findByKey = function(key, callback) {...};
 }
 
 module.exports = UserDAO;
