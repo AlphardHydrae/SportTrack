@@ -18,11 +18,11 @@ class UserDAO {
         values.email,
         values.pwd,
       ],
-      function (err, rows) {
+      function (err) {
         if (err) {
-          callback("insert : ERROR", null);
+          callback("insert : ERROR");
         } else {
-          callback(null, rows);
+          callback(null);
         }
       }
     );
@@ -41,11 +41,11 @@ class UserDAO {
         values.pwd,
         key,
       ],
-      function (err, rows) {
+      function (err) {
         if (err) {
-          callback("update : ERROR", null);
+          callback("update : ERROR");
         } else {
-          callback(null, rows);
+          callback(null);
         }
       }
     );
@@ -55,11 +55,11 @@ class UserDAO {
     return this.db.run(
       "DELETE FROM Utilisateur WHERE email = ?",
       [key],
-      function (err, rows) {
+      function (err) {
         if (err) {
-          callback("delete : ERROR", null);
+          callback("delete : ERROR");
         } else {
-          callback(null, rows);
+          callback(null);
         }
       }
     );

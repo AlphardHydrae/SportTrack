@@ -16,11 +16,11 @@ class ActivityEntryDAO {
         values.alt,
         values.act,
       ],
-      function (err, rows) {
+      function (err) {
         if (err) {
-          callback("insert : ERROR", null);
+          callback("insert : ERROR");
         } else {
-          callback(null, rows);
+          callback(null);
         }
       }
     );
@@ -30,11 +30,11 @@ class ActivityEntryDAO {
     return this.db.run(
       "DELETE from Data WHERE time = ?",
       [key],
-      function (err, rows) {
+      function (err) {
         if (err) {
-          callback("delete : ERROR", null);
+          callback("delete : ERROR");
         } else {
-          callback(null, rows);
+          callback(null);
         }
       }
     );

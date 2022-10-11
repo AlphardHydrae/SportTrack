@@ -20,11 +20,11 @@ class ActivityDAO {
         values.dist,
         values.email,
       ],
-      function (err, rows) {
+      function (err) {
         if (err) {
-          callback("insert : ERROR", null);
+          callback("insert : ERROR");
         } else {
-          callback(null, rows);
+          callback(null);
         }
       }
     );
@@ -34,11 +34,11 @@ class ActivityDAO {
     return this.db.run(
       "DELETE FROM Activite WHERE email = ?",
       [key],
-      function (err, rows) {
+      function (err) {
         if (err) {
-          callback("delete : ERROR", null);
+          callback("delete : ERROR");
         } else {
-          callback(null, rows);
+          callback(null);
         }
       }
     );
