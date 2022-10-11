@@ -18,9 +18,11 @@ class UserDAO {
         values.email,
         values.pwd,
       ],
-      (err) => {
+      function (err, rows) {
         if (err) {
-          console.log("insert : ERROR", err);
+          callback("insert : ERROR", null);
+        } else {
+          callback(null, rows);
         }
       }
     );
@@ -39,9 +41,11 @@ class UserDAO {
         values.pwd,
         key,
       ],
-      (err) => {
+      function (err, rows) {
         if (err) {
-          console.log("update : ERROR", err);
+          callback("update : ERROR", null);
+        } else {
+          callback(null, rows);
         }
       }
     );
@@ -51,18 +55,22 @@ class UserDAO {
     return this.db.run(
       "DELETE FROM Utilisateur WHERE email = ?",
       [key],
-      (err) => {
+      function (err, rows) {
         if (err) {
-          console.log("delete : ERROR", err);
+          callback("delete : ERROR", null);
+        } else {
+          callback(null, rows);
         }
       }
     );
   }
 
   findAll(callback) {
-    return this.db.run("SELECT * FROM Utilisateur", (err) => {
+    return this.db.all("SELECT * FROM Utilisateur", function (err, rows) {
       if (err) {
-        console.log("findAll : ERROR", err);
+        callback("findAll : ERROR", null);
+      } else {
+        callback(null, rows);
       }
     });
   }

@@ -1,8 +1,8 @@
 const db_connection = require("./sqlite_connection");
 
 class ActivityDAO {
-  constructor(database) {
-    this.db = database;
+  constructor() {
+    this.db = db_connection;
   }
 
   insert(values, callback) {
@@ -20,41 +20,54 @@ class ActivityDAO {
         values.dist,
         values.email,
       ],
-      (err) => {
+      function (err, rows) {
         if (err) {
-          console.log("insert : ERROR", err);
+          callback("insert : ERROR", null);
+        } else {
+          callback(null, rows);
         }
       }
     );
   }
 
   delete(key, callback) {
-    return this.db.run("DELETE FROM Activite WHERE email = ?", [key], (err) => {
-      if (err) {
-        console.log("delete : ERROR", err);
+    return this.db.run(
+      "DELETE FROM Activite WHERE email = ?",
+      [key],
+      function (err, rows) {
+        if (err) {
+          callback("delete : ERROR", null);
+        } else {
+          callback(null, rows);
+        }
       }
-    });
+    );
   }
 
   findAll(callback) {
-    return this.db.run("SELECT * FROM Activite", (err) => {
+    return this.db.all("SELECT * FROM Activite", function (err, rows) {
       if (err) {
-        console.log("findAll : ERROR", err);
+        callback("findAll : ERROR", null);
+      } else {
+        callback(null, rows);
       }
     });
   }
 
   findByKey(key, callback) {
-    return this.db.run(
+    return this.db.get(
       "SELECT * FROM Activite WHERE email = ?",
       [key],
-      (err) => {
+      function (err, rows) {
         if (err) {
-          console.log("findAll : ERROR", err);
+          callback("findAll : ERROR", null);
+        } else {
+          callback(null, rows);
         }
       }
     );
   }
 }
 
-module.exports = ActivityDAO;
+let activity = new ActivityDAO();
+module.exports = activity;

@@ -1,8 +1,8 @@
 const db_connection = require("./sqlite_connection");
 
 class ActivityEntryDAO {
-  constructor(database) {
-    this.db = database;
+  constructor() {
+    this.db = db_connection;
   }
 
   insert(values, callback) {
@@ -16,37 +16,54 @@ class ActivityEntryDAO {
         values.alt,
         values.act,
       ],
-      (err) => {
+      function (err, rows) {
         if (err) {
-          console.log("insert : ERROR", err);
+          callback("insert : ERROR", null);
+        } else {
+          callback(null, rows);
         }
       }
     );
   }
 
   delete(key, callback) {
-    return this.db.run("DELETE from Data WHERE time = ?", [key], (err) => {
-      if (err) {
-        console.log("delete : ERROR", err);
+    return this.db.run(
+      "DELETE from Data WHERE time = ?",
+      [key],
+      function (err, rows) {
+        if (err) {
+          callback("delete : ERROR", null);
+        } else {
+          callback(null, rows);
+        }
       }
-    });
+    );
   }
 
   findAll(callback) {
-    return this.db.run("SELECT * FROM Data", (err) => {
+    return this.db.all("SELECT * FROM Data", function (err, rows) {
       if (err) {
-        console.log("findAll : ERROR", err);
+        callback("findAll : ERROR", null);
+      } else {
+        callback(null, rows);
       }
     });
   }
 
   findByKey(key, callback) {
-    return this.db.run("SELECT * FROM Data WHERE time = ?", [key], (err) => {
-      if (err) {
-        console.log("findAll : ERROR", err);
+    return this.db.get(
+      "SELECT * FROM Data WHERE time = ?",
+      [key],
+      function (err, rows) {
+        if (err) {
+          callback("findAll : ERROR", null);
+        } else {
+          callback(null, rows);
+        }
       }
-    });
+    );
   }
 }
 
-module.exports = ActivityEntryDAO;
+let activity_entry = new ActivityEntryDAO();
+module.exports = activity_entry;
