@@ -6,7 +6,8 @@ block content
       .header
         header#head Se connecter
       .line
-      form(function='post' action='/login')
+      p#login_false-text #{incorrect}
+      form(method='post' action='/login')
         .form-field
           label.text-label(for='femail') Email
           br
