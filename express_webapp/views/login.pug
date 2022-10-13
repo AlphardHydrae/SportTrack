@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  .main
+    #login.container
+      .header
+        header#head Se connecter
+      .line
+      form(function='post' action='/login')
+        .form-field
+          label.text-label(for='femail') Email
+          br
+          input#femail.text-field(type='email' name='email' placeholder='Email' pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$' required='')
+        .form-field
+          label.text-label(for='fmdp') Mot de Passe
+          br
+          input#fmdp.text-field(type='password' name='pwd' placeholder='Mot de passe' required='')
+        input.btn-basic(type='submit' value='Connexion')
+      button#btn-alt.btn-basic(onclick="window.location.href='/signup'") Créer un compte

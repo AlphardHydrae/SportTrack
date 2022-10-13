@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    .main
+        .container
+            .header
+            header#head Accueil
+            .line
+            h3#greet Bienvenue 
+            .table-container
+            table.table
+                thead
+                th Date
+                th Description
+                th fMin
+                th fMax
+                th fMoy
+                th Début
+                th Fin
+                th Durée
+                tbody
+                    block table-fill
+            .(class='#')
+            h3 Saisir de nouvelles données
+            form(action='/homepagecontroller' method='POST' enctype='multipart/form-data')
+                label.(class='#') Charger un fichier
+                input.btn-file(type='file' accept='.json' name='file' required='')
+                input.btn-ok-file(type='submit' value='Ok')
+            button#alt.btn-basic(onclick="window.location.href='/changecredentials'") Modifier mes données
+            br
+            button#logout.btn-basic(onclick="window.location.href='/logoutcontroller'") Déconnexion
