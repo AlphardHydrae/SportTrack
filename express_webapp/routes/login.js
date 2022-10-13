@@ -1,3 +1,4 @@
+const e = require("express");
 const express = require("express");
 const router = express.Router();
 const user_dao = require("../../sport-track-db/sport-track-db").user;
@@ -7,18 +8,15 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/", function (req, res, next) {
-  user_dao.findAll((err, rows) => {
+  user_dao.find([req.body.email], (err, rows) => {
     if (err) {
       throw err;
     }
 
-    let result = JSON.parse(JSON.stringify(rows));
-    let i = 0;
+    if (rows != null) {
+      let user = rows;
 
-    while (i < result.length) {
-      let user = result[i];
-
-      if (user.email == req.body.email && user.mdp == req.body.pwd) {
+      if (user.mdp == req.body.pwd) {
         res.render("homepage", {
           lastname: user.nom,
           firstname: user.prenom,
@@ -29,14 +27,12 @@ router.post("/", function (req, res, next) {
           email: user.email,
           pwd: user.mdp,
         });
+      } else {
+        res.render("login", {
+          incorrect: "le nom d'utilisateur ou le mot de passe est incorrect",
+        });
       }
-
-      i++;
     }
-
-    res.render("login", {
-      incorrect: "le nom d'utilisateur ou le mot de passe est incorrect",
-    });
   });
 });
 

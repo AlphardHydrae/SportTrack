@@ -74,6 +74,20 @@ class UserDAO {
       }
     });
   }
+
+  find(key, callback) {
+    return this.db.get(
+      "SELECT * FROM Utilisateur WHERE email = ?",
+      [key],
+      function (err, rows) {
+        if (err) {
+          callback("findAll : ERROR", null);
+        } else {
+          callback(null, rows);
+        }
+      }
+    );
+  }
 }
 
 let user = new UserDAO();
