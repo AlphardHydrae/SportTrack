@@ -4,39 +4,40 @@ block content
     .main
     .container
         .header
-        header#head Créer un compte
+            header Créer un compte
         .line
-        form(action='/signupcontroller' method='POST')
-        .form-field
-            label.text-label Nom
-            input.text-field(type='text' name='lastname' placeholder='Nom' required='')
-        .form-field
-            label.text-label Prénom
-            input.text-field(type='text' name='firstname' placeholder='Prénom' required='')
-        .form-field
-            label.text-label Adresse mail
-            input.text-field(type='email' name='email' placeholder='Adresse mail' required='')
-        .form-field
-            label.text-label Mot de passe
-            input.text-field(type='password' placeholder='Mot de passe' name='pwd' required='')
-        .form-field
-            label.text-label Date de naissance
-            br
-            input#date-field(type='date' name='dob' required='')
-        .form-field
-            label.text-label Sexe
-            br
-            input#h.btn-radio(type='radio' name='genderM')
-            label(for='h') Masculin
-            input#f.btn-radio(type='radio' name='genderF')
-            label(for='f') Féminin
-        .form-field
-            label.text-label Taille (cm)
-            input.btn-range(type='range' min='0' max='250' name='height' oninput='this.nextElementSibling.value = this.value')
-            output.slider-output 150
-        .form-field
-            label.text-label Poids (kg)
-            input.btn-range(type='range' min='0' max='250' name='weight' oninput='this.nextElementSibling.value = this.value')
-            output.slider-output 60
-        input.btn-basic(type='submit' value='Ok')
-        button#logout.btn-basic(onclick='history.back()') Retour
+        form(action='/signup' method='post')
+            .form-field
+                label.text-label Nom
+                input.text-field(type='text' name='lastname' placeholder='Nom' required='')
+            .form-field
+                label.text-label Prénom
+                input.text-field(type='text' name='firstname' placeholder='Prénom' required='')
+            .form-field
+                label.text-label Adresse mail
+                input.text-field(type='email' name='email' placeholder='Adresse mail' required='')
+            .form-field
+                label.text-label Mot de passe
+                input.text-field(type='password' placeholder='Mot de passe' name='pwd' required='')
+            .form-field
+                label.text-label Date de naissance
+                br
+                input#date-field(type='date' name='dob' required='')
+            .form-field
+                label.text-label Sexe
+                br
+                input#h.btn-radio(type='radio' name='genderM')
+                label(for='h') Masculin
+                input#f.btn-radio(type='radio' name='genderF')
+                label(for='f') Féminin
+            .form-field
+                label.text-label Taille (cm)
+                input.btn-range(type='range' min='0' max='250' name='height' oninput='this.nextElementSibling.value = this.value')
+                output.slider-output 150
+            .form-field
+                label.text-label Poids (kg)
+                input.btn-range(type='range' min='0' max='250' name='weight' oninput='this.nextElementSibling.value = this.value')
+                output.slider-output 60
+            input.btn-basic(type='submit' value='Ok')
+        .div
+            button#logout.btn-basic(onclick='history.back()') Retour

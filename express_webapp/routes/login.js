@@ -1,4 +1,3 @@
-const e = require("express");
 const express = require("express");
 const router = express.Router();
 const user_dao = require("../../sport-track-db/sport-track-db").user;

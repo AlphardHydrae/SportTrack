@@ -6,8 +6,8 @@ block content
             .header
                 header Accueil
             .line
-                h3 Bienvenue #{nom} #{prenom}
-                br
+            h3 Bienvenue #{lastname} #{firstname}
+            br
             .table-container
                 table.table
                     thead
@@ -21,12 +21,12 @@ block content
                     th Durée
                     tbody
                         block table-fill
-            .idk
+            .div
                 h3 Saisir de nouvelles données
                 form(action='/homepage' method='post')
                     label Charger un fichier
                     input.btn-file(type='file' accept='.json' name='file' required='')
                     input.btn-ok-file(type='submit' value='Ok')
-                button#alt.btn-basic(onclick="window.location.href='/changecredentials'") Modifier mes données
+                button#alt.btn-basic(onclick="homepage.loadpage()") Modifier mes données
                 br
-                button#logout.btn-basic(onclick="window.location.href='/logoutcontroller'") Déconnexion
+                button#logout.btn-basic(onclick="window.location.href='/login'") Déconnexion
