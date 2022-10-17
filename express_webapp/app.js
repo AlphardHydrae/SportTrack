@@ -1,6 +1,7 @@
 const createError = require("http-errors");
 const express = require("express");
 const session = require("express-session");
+const fileUpload = require("express-fileupload");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
@@ -8,9 +9,11 @@ const logger = require("morgan");
 const indexRouter = require("./routes/index");
 // const usersRouter = require("./routes/users");
 const loginRouter = require("./routes/login");
+const loginFalseRouter = require("./routes/login_false");
 const signupRouter = require("./routes/signup");
 const homepageRouter = require("./routes/homepage");
 const changecredentialsRouter = require("./routes/changecredentials");
+const logoutRouter = require("./routes/logout");
 
 const app = express();
 
@@ -23,13 +26,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(session({ secret: "secret", saveUninitialized: true, resave: true }));
+app.use(fileUpload({ limits: { fileSize: 50 * 1024 * 1024 } }));
 
 app.use("/", indexRouter);
 // app.use('/users', usersRouter);
 app.use("/login", loginRouter);
+app.use("/login_false", loginFalseRouter);
 app.use("/signup", signupRouter);
 app.use("/homepage", homepageRouter);
 app.use("/changecredentials", changecredentialsRouter);
+app.use("/logout", logoutRouter);
 
 app.use(function (req, res, next) {
   next(createError(404));

@@ -56,13 +56,13 @@ body {
 }
 
 .container {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
   -ms-flex: 50%;
   flex: 50%;
   position: absolute;
   animation: 0.75s ease-in-out fadeIn;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
   opacity: 90%;
   background-color: white;
   border-radius: 2%;

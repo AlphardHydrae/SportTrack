@@ -12,7 +12,8 @@ router.get("/", function (req, res, next) {
 
   activity_dao.findByKey([sess.user.email], function (err, rows) {
     if (err) {
-      throw err;
+      console.log(err);
+      // throw err;
     }
 
     if (rows != null) {
@@ -28,8 +29,21 @@ router.get("/", function (req, res, next) {
         rows: { rows },
       });
 
-      console.log(rows);
       console.log("The user information was loaded successfully");
+    } else {
+      res.render("homepage", {
+        lastname: sess.user.nom,
+        firstname: sess.user.prenom,
+        dob: sess.user.dateDeNaissance,
+        gender: sess.user.sexe,
+        height: sess.user.taille,
+        weight: sess.user.poids,
+        email: sess.user.email,
+        pwd: sess.user.mdp,
+        rows: null,
+      });
+
+      console.log("The user information could not be loaded");
     }
   });
 });
@@ -37,7 +51,7 @@ router.get("/", function (req, res, next) {
 router.post("/", function (req, res, next) {
   sess = req.session;
 
-  let json = JSON.parse(req.file);
+  let json = JSON.parse(JSON.stringify(req.file.file));
   let arr = {};
 
   for (let i = 0; i < json.activity.length - 1; i++) {
@@ -97,7 +111,8 @@ router.post("/", function (req, res, next) {
 
     activity_dao.insert(activity, function (err) {
       if (err) {
-        throw err;
+        console.log(err);
+        // throw err;
       }
 
       console.log("The user activity was inserted successfully");
@@ -122,7 +137,8 @@ router.post("/", function (req, res, next) {
 
       activity_entry_dao.insert(data, function (err) {
         if (err) {
-          throw err;
+          console.log(err);
+          // throw err;
         }
       });
 
@@ -132,7 +148,8 @@ router.post("/", function (req, res, next) {
 
   activity_dao.findByKey([sess.user.email], function (err, rows) {
     if (err) {
-      throw err;
+      console.log(err);
+      // throw err;
     }
 
     if (rows != null) {

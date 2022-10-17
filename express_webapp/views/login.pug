@@ -6,7 +6,6 @@ block content
       .header
         header Se connecter
       .line
-      p#login_false-text #{incorrect}
       form(action='/login' method='post')
         .form-field
           label.text-label(for='femail') Email
@@ -17,4 +16,8 @@ block content
           br
           input#fmdp.text-field(type='password' name='pwd' placeholder='Mot de passe' required='')
         input.btn-basic(type='submit' value='Connexion')
-      button#btn-alt.btn-basic(onclick="window.location.href='/signup'") Créer un compte
+      button#btn-alt.btn-basic(onclick="loadSignUp()") Créer un compte
+      script.
+        function loadSignUp() {
+          window.location.href = "/signup";
+        }

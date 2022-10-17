@@ -2,11 +2,15 @@ const express = require("express");
 const router = express.Router();
 const user_dao = require("../../sport-track-db/sport-track-db").user;
 
+var sess;
+
 router.get("/", function (req, res, next) {
   res.render("signup", {});
 });
 
 router.post("/", function (req, res, next) {
+  sess = req.session;
+
   let n = req.body.lastname;
   let p = req.body.firstname;
   let d = req.body.dob;
@@ -35,10 +39,12 @@ router.post("/", function (req, res, next) {
     },
     (err) => {
       if (err) {
-        throw err;
+        res.redirect("/signup");
+        console.log(err);
+        // throw err;
       }
 
-      res.render("homepage", {
+      sess.user = {
         lastname: n,
         first: p,
         dob: d,
@@ -47,9 +53,10 @@ router.post("/", function (req, res, next) {
         weight: pd,
         email: e,
         pwd: m,
-      });
+      };
 
       console.log("The account was created successfully");
+      res.redirect("/homepage");
     }
   );
 });

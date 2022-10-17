@@ -1,21 +1,27 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 const user_dao = require("../../sport-track-db/sport-track-db").user;
 
+var sess;
+
 router.get("/", function (req, res, next) {
+  sess = req.session;
+
   res.render("changecredentials", {
-    lastname: req.lastname,
-    firstname: req.firstname,
-    dob: req.dob,
-    gender: req.gender,
-    height: req.height,
-    weight: req.weight,
-    email: req.email,
-    pwd: req.pwd,
+    lastname: sess.user.nom,
+    firstname: sess.user.prenom,
+    dob: sess.user.dateDeNaissance,
+    gender: sess.user.sexe,
+    height: sess.user.taille,
+    weight: sess.user.poids,
+    email: sess.user.email,
+    pwd: sess.user.mdp,
   });
 });
 
 router.post("/", function (req, res, next) {
+  sess = req.session;
+
   let n = req.body.lastname;
   let p = req.body.firstname;
   let d = req.body.dob;
@@ -32,6 +38,7 @@ router.post("/", function (req, res, next) {
   let m = req.body.pwd;
 
   user_dao.update(
+    [sess.user.email],
     {
       nom: n,
       prenom: p,
@@ -44,19 +51,23 @@ router.post("/", function (req, res, next) {
     },
     (err) => {
       if (err) {
-        throw err;
+        console.log(err);
+        res.redirect("/changecredentials");
+        // throw err;
       }
 
-      res.render("homepage", {
+      sess.user = {
         lastname: n,
-        firstname: p,
+        first: p,
         dob: d,
         gender: s,
         height: t,
         weight: pd,
         email: e,
         pwd: m,
-      });
+      };
+
+      res.redirect("/homepage");
     }
   );
 });

@@ -5,7 +5,7 @@ const user_dao = require("../../sport-track-db/sport-track-db").user;
 var sess;
 
 router.get("/", function (req, res, next) {
-  res.render("login", { incorrect: "" });
+  res.render("login", {});
 });
 
 router.post("/", function (req, res, next) {
@@ -13,7 +13,9 @@ router.post("/", function (req, res, next) {
 
   user_dao.findByKey([req.body.email], (err, rows) => {
     if (err) {
-      throw err;
+      console.log(err);
+      res.redirect("/login_false");
+      // throw err;
     }
 
     if (rows != null) {
@@ -25,12 +27,12 @@ router.post("/", function (req, res, next) {
         console.log("Login successful");
         res.redirect("/homepage");
       } else {
-        res.render("login", {
-          incorrect: "le nom d'utilisateur ou le mot de passe est incorrect",
-        });
-
         console.log("Login failed");
+        res.redirect("/login_false");
       }
+    } else {
+      console.log("Login failed");
+      res.redirect("/login_false");
     }
   });
 });
