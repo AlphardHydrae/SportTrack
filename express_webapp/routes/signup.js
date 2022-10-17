@@ -42,21 +42,21 @@ router.post("/", function (req, res, next) {
         res.redirect("/signup");
         console.log(err);
         // throw err;
+      } else {
+        sess.user = {
+          lastname: n,
+          firstname: p,
+          dob: d,
+          gender: s,
+          height: t,
+          weight: pd,
+          email: e,
+          pwd: m,
+        };
+
+        console.log("The account was created successfully");
+        res.redirect("/homepage");
       }
-
-      sess.user = {
-        lastname: n,
-        first: p,
-        dob: d,
-        gender: s,
-        height: t,
-        weight: pd,
-        email: e,
-        pwd: m,
-      };
-
-      console.log("The account was created successfully");
-      res.redirect("/homepage");
     }
   );
 });

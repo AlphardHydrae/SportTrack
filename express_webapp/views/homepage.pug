@@ -33,7 +33,7 @@ block content
                                     td #{row.duree}
             .div
                 h3 Saisir de nouvelles données
-                form(action='/homepage' method='post')
+                form(action='/homepage' method='post' enctype='multipart/form-data')
                     label Charger un fichier
                     input.btn-file(type='file' accept='.json' name='file' required='')
                     input.btn-ok-file(type='submit' value='Ok')

@@ -8,14 +8,14 @@ router.get("/", function (req, res, next) {
   sess = req.session;
 
   res.render("changecredentials", {
-    lastname: sess.user.nom,
-    firstname: sess.user.prenom,
-    dob: sess.user.dateDeNaissance,
-    gender: sess.user.sexe,
-    height: sess.user.taille,
-    weight: sess.user.poids,
+    lastname: sess.user.lastname,
+    firstname: sess.user.firstname,
+    dob: sess.user.dob,
+    gender: sess.user.gender,
+    height: sess.user.height,
+    weight: sess.user.weight,
     email: sess.user.email,
-    pwd: sess.user.mdp,
+    pwd: sess.user.pwd,
   });
 });
 
@@ -54,20 +54,21 @@ router.post("/", function (req, res, next) {
         console.log(err);
         res.redirect("/changecredentials");
         // throw err;
+      } else {
+        sess.user = {
+          lastname: n,
+          firstname: p,
+          dob: d,
+          gender: s,
+          height: t,
+          weight: pd,
+          email: e,
+          pwd: m,
+          rows: sess.user.rows,
+        };
+
+        res.redirect("/homepage");
       }
-
-      sess.user = {
-        lastname: n,
-        first: p,
-        dob: d,
-        gender: s,
-        height: t,
-        weight: pd,
-        email: e,
-        pwd: m,
-      };
-
-      res.redirect("/homepage");
     }
   );
 });

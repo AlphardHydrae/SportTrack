@@ -16,23 +16,32 @@ router.post("/", function (req, res, next) {
       console.log(err);
       res.redirect("/login_false");
       // throw err;
-    }
+    } else {
+      if (rows != null) {
+        if (rows.mdp == req.body.pwd) {
+          let user = {
+            lastname: rows.nom,
+            firstname: rows.prenom,
+            dob: rows.dateDeNaissance,
+            gender: rows.sexe,
+            height: rows.taille,
+            weight: rows.poids,
+            email: rows.email,
+            pwd: rows.mdp,
+          };
 
-    if (rows != null) {
-      let user = rows;
+          sess.user = user;
 
-      if (user.mdp == req.body.pwd) {
-        sess.user = user;
-
-        console.log("Login successful");
-        res.redirect("/homepage");
+          console.log("Login successful");
+          res.redirect("/homepage");
+        } else {
+          console.log("Login failed");
+          res.redirect("/login_false");
+        }
       } else {
         console.log("Login failed");
         res.redirect("/login_false");
       }
-    } else {
-      console.log("Login failed");
-      res.redirect("/login_false");
     }
   });
 });

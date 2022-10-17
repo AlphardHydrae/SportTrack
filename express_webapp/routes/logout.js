@@ -16,11 +16,14 @@ router.post("/", function (req, res, next) {
 
   user_dao.delete([sess.user.email], function (err) {
     if (err) {
-      throw err;
+      console.log("The account could not be deleted");
+      res.redirect("/homepage");
+      // throw err;
+    } else {
+      sess.destroy();
+      console.log("The account has been deleted successfully");
+      res.redirect("/login");
     }
-
-    sess.destroy();
-    res.redirect("/login");
   });
 });
 

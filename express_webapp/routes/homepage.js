@@ -14,36 +14,36 @@ router.get("/", function (req, res, next) {
     if (err) {
       console.log(err);
       // throw err;
-    }
-
-    if (rows != null) {
-      res.render("homepage", {
-        lastname: sess.user.nom,
-        firstname: sess.user.prenom,
-        dob: sess.user.dateDeNaissance,
-        gender: sess.user.sexe,
-        height: sess.user.taille,
-        weight: sess.user.poids,
-        email: sess.user.email,
-        pwd: sess.user.mdp,
-        rows: { rows },
-      });
-
-      console.log("The user information was loaded successfully");
     } else {
-      res.render("homepage", {
-        lastname: sess.user.nom,
-        firstname: sess.user.prenom,
-        dob: sess.user.dateDeNaissance,
-        gender: sess.user.sexe,
-        height: sess.user.taille,
-        weight: sess.user.poids,
-        email: sess.user.email,
-        pwd: sess.user.mdp,
-        rows: null,
-      });
+      if (rows != null) {
+        res.render("homepage", {
+          lastname: sess.user.lastname,
+          firstname: sess.user.firstname,
+          dob: sess.user.dob,
+          gender: sess.user.gender,
+          height: sess.user.height,
+          weight: sess.user.weight,
+          email: sess.user.email,
+          pwd: sess.user.pwd,
+          rows: { rows },
+        });
 
-      console.log("The user information could not be loaded");
+        console.log("The user information was loaded successfully");
+      } else {
+        res.render("homepage", {
+          lastname: sess.user.lastname,
+          firstname: sess.user.firstname,
+          dob: sess.user.dob,
+          gender: sess.user.gender,
+          height: sess.user.height,
+          weight: sess.user.weight,
+          email: sess.user.email,
+          pwd: sess.user.pwd,
+          rows: null,
+        });
+
+        console.log("The user information could not be loaded");
+      }
     }
   });
 });
@@ -51,27 +51,29 @@ router.get("/", function (req, res, next) {
 router.post("/", function (req, res, next) {
   sess = req.session;
 
-  let json = JSON.parse(JSON.stringify(req.file.file));
+  let json = JSON.parse(JSON.stringify(req.files.file.data.toString("utf8")));
+  console.log(json);
+  console.log(json.data);
   let arr = {};
 
-  for (let i = 0; i < json.activity.length - 1; i++) {
-    let d_temp = json.activity.date;
+  for (let a of json.activity) {
+    let d_temp = a.date;
     let day = substr(d_temp, 0, 2);
     let month = substr(d_temp, 3, 2);
     let year = substr(d_temp, 6, 4);
     let date = year + "-" + month + "-" + day;
 
-    let de = json.activity.description;
+    let de = a.description;
     let fMi = 300;
     let fMa = 0;
 
-    for (let i = 0; i < json.data.length - 1; i++) {
-      if (json.data.cardio_frequency > fMa) {
-        fMa = json.data.cardio_frequency;
+    for (let d of json.data) {
+      if (d.cardio_frequency > fMa) {
+        fMa = d.cardio_frequency;
       }
 
-      if (json.data.cardio_frequency < fMi) {
-        fMi = json.data.cardio_frequency;
+      if (d.cardio_frequency < fMi) {
+        fMi = d.cardio_frequency;
       }
 
       arr.push({ latitude: d.latitude, longitude: d.longitude });
@@ -79,13 +81,13 @@ router.post("/", function (req, res, next) {
 
     let fMo = round((fMi + fMa) / 2);
 
-    let hD_temp = json.data[0].time;
+    let hD_temp = d[0].time;
     let hours = substr(hD_temp, 0, 2);
     let min = substr(hD_temp, 3, 2);
     let sec = substr(hD_temp, 6, 2);
     let hD = strval(hours + ":" + min + ":" + sec);
 
-    let hF_temp = json.data[count($json["data"]) - 1].time;
+    let hF_temp = d[count($json["data"]) - 1].time;
     hours = substr(hF_temp, 0, 2);
     min = substr(hF_temp, 3, 2);
     sec = substr(hF_temp, 6, 2);
@@ -113,18 +115,18 @@ router.post("/", function (req, res, next) {
       if (err) {
         console.log(err);
         // throw err;
+      } else {
+        console.log("The user activity was inserted successfully");
       }
-
-      console.log("The user activity was inserted successfully");
     });
 
-    for (let i = 0; i < json.data.length - 1; i++) {
-      let t = json.data.time;
-      let f = json.data.cardio_frequency;
-      let la = json.data.latitude;
-      let lo = json.data.longitude;
-      let alt = json.data.altitude;
-      let act = activity.date;
+    for (let d of json.data) {
+      let t = d.time;
+      let f = d.cardio_frequency;
+      let la = d.latitude;
+      let lo = d.longitude;
+      let alt = d.altitude;
+      let act = d.date;
 
       let data = {
         time: t,
@@ -139,10 +141,10 @@ router.post("/", function (req, res, next) {
         if (err) {
           console.log(err);
           // throw err;
+        } else {
+          console.log("The user data was inserted successfully");
         }
       });
-
-      console.log("The user data was inserted successfully");
     }
   }
 
@@ -150,22 +152,22 @@ router.post("/", function (req, res, next) {
     if (err) {
       console.log(err);
       // throw err;
-    }
+    } else {
+      if (rows != null) {
+        res.render("homepage", {
+          lastname: sess.user.lastname,
+          firstname: sess.user.firstname,
+          dob: sess.user.dob,
+          gender: sess.user.gender,
+          height: sess.user.height,
+          weight: sess.user.weight,
+          email: sess.user.email,
+          pwd: sess.user.pwd,
+          rows: { rows },
+        });
 
-    if (rows != null) {
-      res.render("homepage", {
-        lastname: sess.user.nom,
-        firstname: sess.user.prenom,
-        dob: sess.user.dateDeNaissance,
-        gender: sess.user.sexe,
-        height: sess.user.taille,
-        weight: sess.user.poids,
-        email: sess.user.email,
-        pwd: sess.user.mdp,
-        rows: { rows },
-      });
-
-      console.log("The user information was loaded successfully");
+        console.log("The user information was loaded successfully");
+      }
     }
   });
 });
