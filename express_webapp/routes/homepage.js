@@ -5,71 +5,38 @@ const activity_entry_dao =
   require("../../sport-track-db/sport-track-db").activity_entry;
 const calculDistanceImpl = require("../../static/js/fonction");
 
+var sess;
+
 router.get("/", function (req, res, next) {
-  // activity_dao.findByKey(req.email, function (err, rows) {
-  //   if (err) {
-  //     throw err;
-  //   }
+  sess = req.session;
 
-  //   if (rows != null) {
-  //     let table = "</td><td>";
+  activity_dao.findByKey([sess.user.email], function (err, rows) {
+    if (err) {
+      throw err;
+    }
 
-  //     rows.forEach(
-  //       (activity) =>
-  //         "<tr><td>" +
-  //         activity.date +
-  //         table.activity.description +
-  //         table +
-  //         activity.fMin +
-  //         table.activity.fMax +
-  //         table +
-  //         activity.fMoy +
-  //         table +
-  //         activity.hDebut +
-  //         table +
-  //         activity.hFin +
-  //         table +
-  //         activity.duree +
-  //         "</td></tr>"
-  //     );
+    if (rows != null) {
+      res.render("homepage", {
+        lastname: sess.user.nom,
+        firstname: sess.user.prenom,
+        dob: sess.user.dateDeNaissance,
+        gender: sess.user.sexe,
+        height: sess.user.taille,
+        weight: sess.user.poids,
+        email: sess.user.email,
+        pwd: sess.user.mdp,
+        rows: { rows },
+      });
 
-  //     res.render("homepage", {
-  //       lastname: req.lastname,
-  //       firstname: req.firstname,
-  //       dob: req.dob,
-  //       gender: req.gender,
-  //       height: req.height,
-  //       weight: req.weight,
-  //       email: req.email,
-  //       pwd: req.pwd,
-  //     });
-  //   } else {
-  //     res.render("homepage", {
-  //       lastname: req.lastname,
-  //       firstname: req.firstname,
-  //       dob: req.dob,
-  //       gender: req.gender,
-  //       height: req.height,
-  //       weight: req.weight,
-  //       email: req.email,
-  //       pwd: req.pwd,
-  //     });
-  //   }
-  // });
-
-  res.render("homepage", {
-    lastname: req.lastname,
-    firstname: req.firstname,
-    dob: req.dob,
-    gender: req.gender,
-    height: req.height,
-    weight: req.weight,
-    email: req.email,
-    pwd: req.pwd,
+      console.log(rows);
+      console.log("The user information was loaded successfully");
+    }
   });
 });
 
 router.post("/", function (req, res, next) {
+  sess = req.session;
+
   let json = JSON.parse(req.file);
   let arr = {};
 
@@ -113,7 +80,7 @@ router.post("/", function (req, res, next) {
     let du = strtotime(hF) - strtotime(hD);
 
     let dist = calculDistanceImpl(calculDistanceTrajet(arr)) * 100;
-    let u = req.email;
+    let u = sess.user.email;
 
     let activity = {
       date: date,
@@ -132,6 +99,8 @@ router.post("/", function (req, res, next) {
       if (err) {
         throw err;
       }
+
+      console.log("The user activity was inserted successfully");
     });
 
     for (let i = 0; i < json.data.length - 1; i++) {
@@ -156,34 +125,32 @@ router.post("/", function (req, res, next) {
           throw err;
         }
       });
+
+      console.log("The user data was inserted successfully");
     }
   }
 
-  res.render("homepage", {
-    lastname: req.lastname,
-    firstname: req.firstname,
-    dob: req.dob,
-    gender: req.gender,
-    height: req.height,
-    weight: req.weight,
-    email: req.email,
-    pwd: req.pwd,
+  activity_dao.findByKey([sess.user.email], function (err, rows) {
+    if (err) {
+      throw err;
+    }
+
+    if (rows != null) {
+      res.render("homepage", {
+        lastname: sess.user.nom,
+        firstname: sess.user.prenom,
+        dob: sess.user.dateDeNaissance,
+        gender: sess.user.sexe,
+        height: sess.user.taille,
+        weight: sess.user.poids,
+        email: sess.user.email,
+        pwd: sess.user.mdp,
+        rows: { rows },
+      });
+
+      console.log("The user information was loaded successfully");
+    }
   });
 });
-
-function loadpage() {
-  router.get("/", function (req, res, next) {
-    res.render("changecredentials", {
-      lastname: req.lastname,
-      firstname: req.firstname,
-      dob: req.dob,
-      gender: req.gender,
-      height: req.height,
-      weight: req.weight,
-      email: req.email,
-      pwd: req.pwd,
-    });
-  });
-}
 
 module.exports = router;

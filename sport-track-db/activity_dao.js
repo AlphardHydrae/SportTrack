@@ -56,11 +56,11 @@ class ActivityDAO {
 
   findByKey(key, callback) {
     return this.db.get(
-      "SELECT * FROM Activite WHERE email = ?",
+      "SELECT * FROM Activite JOIN Utilisateur ON unUtilisateur = email WHERE email = ?",
       [key],
       function (err, rows) {
         if (err) {
-          callback("findAll : ERROR", null);
+          callback("findByKey : ERROR", null);
         } else {
           callback(null, rows);
         }

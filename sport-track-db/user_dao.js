@@ -75,13 +75,13 @@ class UserDAO {
     });
   }
 
-  find(key, callback) {
+  findByKey(key, callback) {
     return this.db.get(
       "SELECT * FROM Utilisateur WHERE email = ?",
       [key],
       function (err, rows) {
         if (err) {
-          callback("findAll : ERROR", null);
+          callback("findByKey : ERROR", null);
         } else {
           callback(null, rows);
         }

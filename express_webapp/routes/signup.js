@@ -48,6 +48,8 @@ router.post("/", function (req, res, next) {
         email: e,
         pwd: m,
       });
+
+      console.log("The account was created successfully");
     }
   );
 });
