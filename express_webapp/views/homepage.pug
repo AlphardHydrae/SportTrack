@@ -1,0 +1,50 @@
+extends layout
+
+block content
+    .main
+        .container
+            .header
+                header Accueil
+            .line
+            h3 Bienvenue #{lastname} #{firstname}
+            br
+            .table-container
+                table.table
+                    thead
+                        th Date
+                        th Description
+                        th fMin
+                        th fMax
+                        th fMoy
+                        th Début
+                        th Fin
+                        th Durée
+                    tbody
+                        if rows != null
+                            for row in rows
+                                tr
+                                    td #{row.date}
+                                    td #{row.description}
+                                    td #{row.fMin}
+                                    td #{row.fMax}
+                                    td #{row.fMoy}
+                                    td #{row.hDebut}
+                                    td #{row.hFin}
+                                    td #{row.duree}
+            .div
+                h3 Saisir de nouvelles données
+                form(action='/homepage' method='post' enctype='multipart/form-data')
+                    label Charger un fichier
+                    input.btn-file(type='file' accept='.json' name='file' required='')
+                    input.btn-ok-file(type='submit' value='Ok')
+                button#alt.btn-basic(onclick="loadChangeCredentials()") Modifier mes données
+                br
+                button#logout.btn-basic(onclick="loadLogout()") Déconnexion
+        script.
+            function loadChangeCredentials() {
+            window.location.href='/changecredentials';
+            }
+
+            function loadLogout() {
+                window.location.href='/logout';
+            }

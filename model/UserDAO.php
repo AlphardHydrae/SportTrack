@@ -1,6 +1,6 @@
 <?php
-require_once "SqliteConnection.php";
-require_once "Utilisateur.php";
+require_once 'SqliteConnection.php';
+require_once 'Utilisateur.php';
 
 class UtilisateurDAO
 {
@@ -36,15 +36,6 @@ class UtilisateurDAO
 
             $query = "INSERT INTO Utilisateur(nom, prenom, dateDeNaissance, sexe, taille, poids, email, mdp) VALUES (?,?,?,?,?,?,?,?)";
             $stmt = $db->prepare($query);
-
-            // $stmt->bindValue(':n',$obj -> getNom(), PDO::PARAM_STR);
-            // $stmt->bindValue(':p',$obj -> getPrenom(), PDO::PARAM_STR);
-            // $stmt->bindValue(':d',$obj -> getDob(), PDO::PARAM_STR);
-            // $stmt->bindValue(':s',$obj -> getSexe(), PDO::PARAM_STR);
-            // $stmt->bindValue(':t',$obj -> getTaille(), PDO::PARAM_STR);
-            // $stmt->bindValue(':pd',$obj -> getPoids(), PDO::PARAM_STR);
-            // $stmt->bindValue(':e',$obj -> getEmail(), PDO::PARAM_STR);
-            // $stmt->bindValue(':m',$obj -> getMdp(), PDO::PARAM_STR);
 
             $n = $obj->getNom();
             $p = $obj->getPrenom();

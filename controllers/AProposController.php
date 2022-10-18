@@ -1,5 +1,5 @@
 <?php
-require(__ROOT__ . '/controllers/Controller.php');
+require __ROOT__ . '/controllers/Controller.php';
 
 class aproposcontroller extends Controller
 {

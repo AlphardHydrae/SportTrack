@@ -47,4 +47,3 @@ var_dump($result);
 echo '<h2>Data</h2>';
 $result = ActivityEntryDAO::getInstance() -> findAll();
 var_dump($result);
-?>

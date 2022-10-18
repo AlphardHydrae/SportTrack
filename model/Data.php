@@ -1,5 +1,5 @@
 <?php
-require_once __ROOT__ . '/model/Activity.php';
+require_once 'Activity.php';
 class Data
 {
     private $time;

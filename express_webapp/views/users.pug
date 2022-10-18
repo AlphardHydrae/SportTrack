@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='../../../../../static/css/style.css')
+    body
+        table(border='1')
+            thead
+                tr
+                    th Nom
+                    th Prénom
+                    th Date de naissance
+                    th Taille
+                    th Poids
+                    th Email
+            tbody
+                each row in rows
+                    tr
+                    td= row.nom
+                    td= row.prenom
+                    td= row.dateDeNaissance
+                    td= row.taille
+                    td= row.poids
+                    td= row.email

@@ -21,7 +21,9 @@ class SqliteConnection
     {
         try {
             // $db = new PDO('sqlite:' . DB_FILE);
-            $db = new PDO("mysql:host=localhost;dbname=db_SportTrack", "root", "AlphardPWD");
+            $username = "root";
+            $password = "AlphardPWD";
+            $db = new PDO("mysql:host=localhost;dbname=db_SportTrack", $username, $password);
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             return $db;

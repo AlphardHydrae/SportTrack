@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  .main#login_false
+    #login.container
+      .header
+        header Se connecter
+      .line
+      p#login_false-text le nom d'utilisateur ou le mot de passe est incorrect
+      form(action='/login_false' method='post')
+        .form-field
+          label.text-label(for='femail') Email
+          br
+          input#femail.text-field(type='email' name='email' placeholder='Email' pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$' required='')
+        .form-field
+          label.text-label(for='fmdp') Mot de Passe
+          br
+          input#fmdp.text-field(type='password' name='pwd' placeholder='Mot de passe' required='')
+        input.btn-basic(type='submit' value='Connexion')
+      button#btn-alt.btn-basic(onclick="loadSignUp()") Créer un compte
+      script.
+        function loadSignUp() {
+          window.location.href = "/signup";
+        }

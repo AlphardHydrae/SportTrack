@@ -1,14 +1,6 @@
 <?php
-#Ajouter,modifier,supprimer,lister les activités sportives,get
-#require_once("SqliteConnection.php";
 class Activity
 {
-    /**
-     * À l’instar de la séance précédente, écrivez une classe ActivityDAO 
-     * permettant d’ajouter, de modifier, de supprimer et de lister les activités sportives contenues dans votre base de données.
-     * Cette classe devra également permettre d’obtenir les activités sportives d’un utilisateur en particulier.
-     */
-
     private string $date;
     private string $description;
     private string $fMin;
@@ -78,14 +70,4 @@ class Activity
     {
         return $this->utilisateur;
     }
-
-    // public function setDate(string $date) : string { this.$date -> $date}
-    // public function setDescription(string $description) : string { this.$description -> $description }
-    // public function setFMin(string $fMin) : string { this.$fMin -> $fMin }
-    // public function setFMax(string $fMax) : string { this.$fMax -> $fMax; }
-    // public function setFMoy(string $fMoy) : string { this.$fMoy -> $fMoy; }
-    // public function setHDebut(string $hDebut) : string { this.$hDebut -> $hDebut; }
-    // public function setHFin(string $hFin) : string { this.$hFin -> $hFin; }
-    // public function setDuree(string $duree) : string { this.$duree -> $duree; }
-    // public function setDistance(string $distance) : string { this.$distance -> $distance; }
 }

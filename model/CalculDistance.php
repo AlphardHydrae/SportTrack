@@ -18,4 +18,3 @@ interface CalculDistance {
      */
     public function calculDistanceTrajet(Array $parcours): float;
 }
-?>

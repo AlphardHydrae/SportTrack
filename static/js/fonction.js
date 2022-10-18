@@ -84,4 +84,4 @@ const list = {
   ],
 };
 
-console.log(calculDistanceTrajet(list));
+// console.log(calculDistanceTrajet(list));

@@ -1,6 +1,6 @@
 <?php
-require_once('SqliteConnection.php');
-require_once('Data.php');
+require_once 'SqliteConnection.php';
+require_once 'Data.php';
 
 class ActivityEntryDAO
 {
@@ -32,11 +32,10 @@ class ActivityEntryDAO
     {
         if ($st instanceof Data) {
             $dbc = SqliteConnection::getInstance()->getConnection();
-            // prepare the SQL statement
+
             $query = "insert into Data(time,freqCardiaque,latitude,longitude,altitude, uneActivite) values (:t, :f, :la, :lo, :a, :act)";
             $stmt = $dbc->prepare($query);
 
-            // bind the parameters
             $stmt->bindValue(':t', $st->getTime(), PDO::PARAM_STR);
             $stmt->bindValue(':f', $st->getFrequenceCardiaque(), PDO::PARAM_STR);
             $stmt->bindValue(':la', $st->getLatitude(), PDO::PARAM_STR);
@@ -44,7 +43,6 @@ class ActivityEntryDAO
             $stmt->bindValue(':a', $st->getAltitude(), PDO::PARAM_STR);
             $stmt->bindValue(':act', $st->getActivite(), PDO::PARAM_STR);
 
-            // execute the prepared statement
             $stmt->execute();
         }
     }
@@ -53,26 +51,13 @@ class ActivityEntryDAO
     {
         if ($obj instanceof Data) {
             $dbc = SqliteConnection::getInstance()->getConnection();
-            // prepare the SQL statement
+
             $query = "delete from Data WHERE time = :t";
             $stmt = $dbc->prepare($query);
-            // bind the parameters
+
             $stmt->bindValue(':t', $obj->getTime(), PDO::PARAM_STR);
-            // execute the prepared statement
+
             $stmt->execute();
         }
     }
-
-    // public function update(Data $obj): void {
-    //     if($obj instanceof Data){
-    //         $dbc = SqliteConnection:getInstance()->getConnection();
-    //         // prepare the SQL statement
-    //         $query = "update from Activite WHERE date = :d";
-    //         $stmt = $dbc -> prepare($query);
-    //         // bind the parameters
-    //         $stmt ->bindValue(':d', $obj -> getDate(),PDO::PARAM_STR);
-    //         // execute the prepared statement
-    //         $stmt ->execute();
-    //     }
-    // }
 }
