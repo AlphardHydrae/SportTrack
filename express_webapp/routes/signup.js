@@ -54,6 +54,7 @@ router.post("/", function (req, res, next) {
           pwd: m,
         };
 
+        console.log(sess);
         console.log("The account was created successfully");
         res.redirect("/homepage");
       }

@@ -51,8 +51,8 @@ class ActivityEntryDAO {
   }
 
   findByKey(key, callback) {
-    return this.db.get(
-      "SELECT * FROM Data WHERE time = ?",
+    return this.db.all(
+      "SELECT * FROM Data JOIN Activity ON uneActivite = date WHERE time = ?",
       [key],
       function (err, rows) {
         if (err) {

@@ -55,19 +55,8 @@ router.post("/", function (req, res, next) {
         res.redirect("/changecredentials");
         // throw err;
       } else {
-        sess.user = {
-          lastname: n,
-          firstname: p,
-          dob: d,
-          gender: s,
-          height: t,
-          weight: pd,
-          email: e,
-          pwd: m,
-          rows: sess.user.rows,
-        };
-
-        res.redirect("/homepage");
+        console.log("The user information was updated successfully");
+        res.redirect("/logout");
       }
     }
   );

@@ -55,7 +55,7 @@ class ActivityDAO {
   }
 
   findByKey(key, callback) {
-    return this.db.get(
+    return this.db.all(
       "SELECT * FROM Activite JOIN Utilisateur ON unUtilisateur = email WHERE email = ?",
       [key],
       function (err, rows) {

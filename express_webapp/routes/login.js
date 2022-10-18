@@ -32,6 +32,7 @@ router.post("/", function (req, res, next) {
 
           sess.user = user;
 
+          console.log(sess);
           console.log("Login successful");
           res.redirect("/homepage");
         } else {
